@@ -206,7 +206,7 @@ function formatText(value) {
       "</div>";
   }
 
-  /* ---------- GALERI FOTO (halaman detail) ---------- */
+    /* ---------- GALERI FOTO (halaman detail) ---------- */
   function galleryHtml(product) {
     const list = galleryImages(product);
     if (list.length < 2) return '<div class="detail-visual">' + productVisual(product) + "</div>";
@@ -216,27 +216,31 @@ function formatText(value) {
         '" alt="' + escapeHtml(product.name + ", foto " + (i + 1)) + '"' + (i === 0 ? "" : ' loading="lazy"') +
         ' data-product-id="' + escapeHtml(product.id) + '"></div>';
     }).join("");
-    const thumbs = list.map(function (src, i) {
-      return '<button class="gallery-thumb' + (i === 0 ? " active" : "") + '" type="button" data-index="' + i +
-        '" aria-label="Lihat foto ' + (i + 1) + '"><img src="' + escapeHtml(src) + '" alt="" data-thumb="1"></button>';
+
+    const dots = list.map(function (src, i) {
+      return '<button class="gallery-dot' + (i === 0 ? " active" : "") + '" type="button" data-index="' + i +
+        '" aria-label="Lihat foto ' + (i + 1) + '"></button>';
     }).join("");
 
     return '<div class="detail-visual"><div class="gallery">' +
       '<div class="gallery-track" tabindex="0" aria-label="Foto produk, geser ke samping untuk melihat foto lainnya">' +
-      slides + '</div><div class="gallery-thumbs">' + thumbs + "</div></div></div>";
+      slides + '</div><div class="gallery-dots">' + dots + "</div></div></div>";
   }
 
   function initGallery(root) {
     const track = root.querySelector(".gallery-track");
     if (!track) return;
-    const thumbs = Array.prototype.slice.call(root.querySelectorAll(".gallery-thumb"));
+    const dots = Array.prototype.slice.call(root.querySelectorAll(".gallery-dot"));
 
     function mark(index) {
-      thumbs.forEach(function (thumb, i) { thumb.classList.toggle("active", i === index); });
+      dots.forEach(function (dot, i) {
+        dot.classList.toggle("active", i === index);
+      });
     }
-    thumbs.forEach(function (thumb) {
-      thumb.addEventListener("click", function () {
-        const index = Number(thumb.dataset.index);
+
+    dots.forEach(function (dot) {
+      dot.addEventListener("click", function () {
+        const index = Number(dot.dataset.index);
         const left = index * track.clientWidth;
         if (track.scrollTo) track.scrollTo({ left: left, behavior: "smooth" });
         else track.scrollLeft = left;
