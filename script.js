@@ -522,7 +522,6 @@ const adminActions =
       '<p class="product-category">' + escapeHtml(categoryLabel(product)) + "</p>" +
       '<h1 class="detail-name">' + escapeHtml(product.name) + "</h1>" +
       '<p class="detail-price' + (hasPrice(product.price) ? "" : " price-ask") + '">' + rupiah(product.price) + "</p>" +
-      '<div class="detail-desc">' + formatText(product.description) + "</div>" +
       '<div class="detail-actions">' + websiteAction + adminActions + "</div>" +
     "</div>" +
   "</div>" +
