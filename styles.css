@@ -214,14 +214,14 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
 
 .detail-actions{margin-top:26px}
 .detail-more{max-width:760px;margin-top:34px;padding-top:26px;border-top:1px solid var(--line)}
-.detail-more h2{font:700 22px/1.3 var(--font-heading);margin:0 0 12px}
+.detail-more h2{font:700 20px/1.3 var(--font-heading);margin:0 0 12px}
 .detail-more h2:not(:first-child){margin-top:30px}
 .detail-text p,.detail-text ul{font-size:16px;line-height:1.5;color:#4a4943;margin:0 0 6px}
 .detail-text ul{padding-left:20px;list-style:disc}
 .detail-text li{margin-bottom:3px;padding-left:3px}
 .detail-text strong{font-weight:700;color:var(--ink)}
 .spec-list{margin:0;border:1px solid var(--line);border-radius:10px;overflow:hidden}
-.spec-row{display:grid;grid-template-columns:minmax(110px,32%) 1fr;gap:16px;padding:12px 16px;font-size:17px;line-height:1.5}
+.spec-row{display:grid;grid-template-columns:minmax(120px,38%) 1fr;gap:12px;padding:11px 14px;font-size:15px;line-height:1.45}
 .spec-row:nth-child(odd){background:#faf9f5}
 .spec-row dt{font-weight:600;color:var(--muted)}
 .spec-row dd{margin:0}
@@ -257,6 +257,7 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
   .hero{padding-top:44px;padding-bottom:44px}
   .category-grid{grid-template-columns:repeat(2,1fr)}
 }
+
 @media(max-width:800px){
   .detail-layout{
     grid-template-columns:1fr;
@@ -271,14 +272,16 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
     padding-top:0;
   }
 
-  /* Wadah foto menjadi acuan posisi */
-  .detail-visual{
+  /* Foto memenuhi lebar layar HP */
+  body[data-page="detail"] .detail-visual{
     position:relative;
-    width:100%;
+    width:calc(100% + var(--gutter) + var(--gutter));
+    margin-left:calc(-1 * var(--gutter));
+    overflow:hidden;
   }
 
-  /* Gradasi menyatu dengan bagian bawah foto */
-  .detail-visual::after{
+  /* Gradasi di dasar foto */
+  body[data-page="detail"] .detail-visual::after{
     content:"";
     position:absolute;
     left:0;
@@ -294,38 +297,41 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
     z-index:1;
   }
 
-  /* Judul dan kategori di atas gradasi */
-  .detail-photo-caption{
+  /* Kategori dan nama produk menempel dasar foto */
+  body[data-page="detail"] .detail-photo-caption{
     display:block;
     position:absolute;
     left:var(--gutter);
     right:var(--gutter);
-    bottom:42px;
+    bottom:0;
     z-index:2;
+    padding:0;
   }
 
-  .detail-photo-caption .product-category{
+  /* Teks kategori */
+  body[data-page="detail"] .detail-photo-caption .product-category{
     color:var(--olive);
-    font-size:12px;
-    letter-spacing:.8px;
-    margin:0 0 3px;
+    font-size:11px;
+    letter-spacing:.5px;
+    margin:0 0 2px;
   }
 
-  .detail-photo-caption .detail-name{
+  /* Nama produk */
+  body[data-page="detail"] .detail-photo-caption .detail-name{
     color:var(--ink);
-    font-size:24px;
+    font-size:20px;
     line-height:1.25;
     margin:0;
   }
 
   /* Sembunyikan judul dan kategori versi desktop */
-  .detail-info > .product-category,
-  .detail-info > .detail-name{
+  body[data-page="detail"] .detail-info > .product-category,
+  body[data-page="detail"] .detail-info > .detail-name{
     display:none;
   }
 
-  /* Titik galeri menumpuk di atas foto */
-  .detail-visual .gallery-dots{
+  /* Titik indikator galeri */
+  body[data-page="detail"] .detail-visual .gallery-dots{
     position:absolute;
     left:0;
     right:0;
@@ -334,6 +340,7 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
     margin:0;
   }
 }
+
 @media(max-width:720px){
   .site-header{min-height:66px}
   .main-nav{display:none;position:absolute;top:100%;left:0;right:0;padding:12px var(--gutter) 18px;background:var(--white);border-bottom:1px solid var(--line);flex-direction:column;gap:2px;font-size:18px}
@@ -409,8 +416,8 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
   padding: 8px 10px;
   border: 1px solid var(--line);
   border-radius: 9px;
-  background: #f7f6f1;
-  color: var(--ink);
+  background: var(--olive);
+  color: #fff;
   font-size: 13px;
   font-weight: 600;
   line-height: 1.35;
