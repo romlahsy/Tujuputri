@@ -123,7 +123,7 @@ window.TUJUPUTRI_CONFIG = {
   name: "Daster KING'S Standar",
   category: "fashion",
   label: "Fashion Dewasa",
-  description: "Daster model longgar dengan bahan adem dan ringan, nyaman untuk menemani aktivitas sehari-hari.",
+  description: "",
   price: 60000,
   image: [
     "images/daster-kings-standar-1.webp",
