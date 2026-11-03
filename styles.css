@@ -395,6 +395,17 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
   html{scroll-behavior:auto}
   *{transition:none!important}
 }
+@media (max-width: 620px) {
+  body[data-page="detail"] .detail-actions {
+    margin-top: 0;
+  }
+
+  body[data-page="detail"] .detail-more {
+    margin-top: 8px;
+    padding-top: 0;
+    border-top: 0;
+  }
+}
 /* Pilihan admin WhatsApp */
 .admin-contact {
   margin-top: 20px;
