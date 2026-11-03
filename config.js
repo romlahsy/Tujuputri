@@ -117,20 +117,36 @@ window.TUJUPUTRI_CONFIG = {
      maksimal 3 baris). Teks panjang taruh di "details".
   */
   products: [
-    {
-      id: "daster-kings",
-      name: "Daster KING'S Jumbo",
-      category: "fashion",
-      label: "Fashion Dewasa",
-      description: "Model longgar untuk menemani aktivitas sehari-hari.",
-      details: "",
-      specs: [],
-      price: null,
-      image: "",
-      owner: "bapak",
-      featured: true,
-      available: true
-    },
+    
+{
+  id: "daster-kings-standar",
+  name: "Daster KING'S Standar",
+  category: "fashion",
+  label: "Fashion Dewasa",
+  description: "Daster model longgar dengan bahan adem dan ringan, nyaman untuk menemani aktivitas sehari-hari.",
+  price: 60000,
+  image: [
+    "images/daster-kings-standar-1.webp",
+    "images/daster-kings-standar-2.webp",
+    "images/daster-kings-standar-3.webp",
+    "images/daster-kings-standar-4.webp"
+  ],
+  owner: "bapak",
+  featured: true,
+  available: true,
+  details: `
+Daster dengan model longgar yang nyaman untuk menemani aktivitas sehari-hari. Dilengkapi bukaan depan dengan dua kancing serta satu saku samping tersembunyi di bagian kanan.
+  `,
+  specs: [
+    ["Lebar dada", "±57 cm"],
+    ["Panjang baju", "±110 cm"],
+    ["Panjang lengan", "±14 cm"],
+    ["Saku", "1 saku samping tersembunyi (kanan)"],
+    ["Bukaan depan", "2 kancing"],
+    ["Model", "Longgar"],
+    ["Bahan", "Adem dan ringan"]
+  ]
+},
     {
       id: "pakaian-dalam-dewasa",
       name: "Pakaian Dalam Dewasa",
