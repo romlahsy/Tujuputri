@@ -34,8 +34,8 @@ window.TUJUPUTRI_CONFIG = {
 
   /* ---------- NOMOR WHATSAPP ---------- */
   whatsapp: {
-    bapak: "", // Nomor WhatsApp Bapak, contoh: "6281234567890"
-    kamu: ""   // Nomor WhatsApp kamu,  contoh: "6289876543210"
+    bapak: "6285270927388", // Nomor WhatsApp Bapak, contoh: "6281234567890"
+    kamu: "6282325640565"   // Nomor WhatsApp kamu,  contoh: "6289876543210"
   },
 
   /* ---------- TAUTAN WEBSITE LUAR ----------
@@ -44,7 +44,7 @@ window.TUJUPUTRI_CONFIG = {
      contoh: "https://namakamu.github.io/safa/"
   */
   links: {
-    safa: ""
+    safa: "https://safabookmark.getspace.workers.dev/"
   },
 
   /* ---------- MEDIA SOSIAL ----------
@@ -69,7 +69,7 @@ window.TUJUPUTRI_CONFIG = {
       id: "fashion",
       page: "fashion.html",
       label: "Fashion Dewasa",
-      short: "Daster & pakaian dalam",
+      short: "Daster, sirwal, & pakaian dalam",
       intro: "Pilihan pakaian dewasa yang nyaman untuk aktivitas sehari-hari."
     },
     {
@@ -83,8 +83,8 @@ window.TUJUPUTRI_CONFIG = {
       id: "buku",
       page: "buku-islami.html",
       label: "Buku Islami",
-      short: "Bacaan pilihan",
-      intro: "Bacaan islami untuk menemani waktu belajar dan membaca."
+      short: "Buku anak & dewasa",
+      intro: "Pilihan buku Islami untuk menambah ilmu dan wawasan."
     },
     {
       id: "kreatif",
