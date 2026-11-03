@@ -125,23 +125,63 @@
   }
 
 
-  // Mengubah teks panjang dari config.js menjadi paragraf / daftar poin.
-  // - Baris kosong = paragraf baru
-  // - Baris yang semuanya diawali "- " = daftar poin
-  function formatText(value) {
-    const blocks = Array.isArray(value) ? value : String(value == null ? "" : value).split(/\n\s*\n/);
-    return blocks.map(function (block) {
-      const lines = String(block).split("\n").map(function (l) { return l.trim(); }).filter(Boolean);
-      if (!lines.length) return "";
-      const isList = lines.every(function (l) { return /^[-•*]\s+/.test(l); });
-      if (isList) {
-        return "<ul>" + lines.map(function (l) {
-          return "<li>" + escapeHtml(l.replace(/^[-•*]\s+/, "")) + "</li>";
-        }).join("") + "</ul>";
-      }
-      return "<p>" + lines.map(escapeHtml).join("<br>") + "</p>";
-    }).join("");
+  // Mengubah teks panjang dari config.js menjadi paragraf,
+// daftar poin, dan teks tebal.
+function formatInline(value) {
+  return escapeHtml(value).replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
+}
+
+function formatText(value) {
+  const source = Array.isArray(value)
+    ? value.map(function (item) {
+        return String(item == null ? "" : item);
+      }).join("\n\n")
+    : String(value == null ? "" : value);
+
+  const lines = source.split(/\r?\n/);
+  const output = [];
+  let paragraph = [];
+  let list = [];
+
+  function flushParagraph() {
+    if (!paragraph.length) return;
+    output.push("<p>" + paragraph.map(formatInline).join("<br>") + "</p>");
+    paragraph = [];
   }
+
+  function flushList() {
+    if (!list.length) return;
+    output.push(
+      "<ul>" +
+      list.map(function (item) {
+        return "<li>" + formatInline(item) + "</li>";
+      }).join("") +
+      "</ul>"
+    );
+    list = [];
+  }
+
+  lines.forEach(function (rawLine) {
+    const line = rawLine.trim();
+    const match = line.match(/^[-•*]\s+(.+)$/);
+
+    if (!line) {
+      flushParagraph();
+      flushList();
+    } else if (match) {
+      flushParagraph();
+      list.push(match[1]);
+    } else {
+      flushList();
+      paragraph.push(line);
+    }
+  });
+
+  flushParagraph();
+  flushList();
+
+  return output.join("");
+}
 
   // Spesifikasi: [["Bahan", "Katun"], ["Ukuran", "Jumbo"]]
   function specsList(specs) {
