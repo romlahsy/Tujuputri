@@ -206,30 +206,45 @@ function formatText(value) {
       "</div>";
   }
 
-    /* ---------- GALERI FOTO (halaman detail) ---------- */
+      /* ---------- GALERI FOTO (halaman detail) ---------- */
   function galleryHtml(product) {
     const list = galleryImages(product);
-    if (list.length < 2) return '<div class="detail-visual">' + productVisual(product) + "</div>";
+    let visual;
 
-    const slides = list.map(function (src, i) {
-      return '<div class="product-visual gallery-slide"><img class="product-img" src="' + escapeHtml(src) +
-        '" alt="' + escapeHtml(product.name + ", foto " + (i + 1)) + '"' + (i === 0 ? "" : ' loading="lazy"') +
-        ' data-product-id="' + escapeHtml(product.id) + '"></div>';
-    }).join("");
+    if (list.length < 2) {
+      visual = productVisual(product);
+    } else {
+      const slides = list.map(function (src, i) {
+        return '<div class="product-visual gallery-slide"><img class="product-img" src="' + escapeHtml(src) +
+          '" alt="' + escapeHtml(product.name + ", foto " + (i + 1)) + '"' + (i === 0 ? "" : ' loading="lazy"') +
+          ' data-product-id="' + escapeHtml(product.id) + '"></div>';
+      }).join("");
 
-    const dots = list.map(function (src, i) {
-      return '<button class="gallery-dot' + (i === 0 ? " active" : "") + '" type="button" data-index="' + i +
-        '" aria-label="Lihat foto ' + (i + 1) + '"></button>';
-    }).join("");
+      const dots = list.map(function (src, i) {
+        return '<button class="gallery-dot' + (i === 0 ? " active" : "") + '" type="button" data-index="' + i +
+          '" aria-label="Lihat foto ' + (i + 1) + '"></button>';
+      }).join("");
 
-    return '<div class="detail-visual"><div class="gallery">' +
-      '<div class="gallery-track" tabindex="0" aria-label="Foto produk, geser ke samping untuk melihat foto lainnya">' +
-      slides + '</div><div class="gallery-dots">' + dots + "</div></div></div>";
+      visual = '<div class="gallery">' +
+        '<div class="gallery-track" tabindex="0" aria-label="Foto produk, geser ke samping untuk melihat foto lainnya">' +
+        slides + '</div>' +
+        '<div class="gallery-dots">' + dots + '</div>' +
+        '</div>';
+    }
+
+    return '<div class="detail-visual">' +
+      visual +
+      '<div class="detail-photo-caption">' +
+        '<p class="product-category">' + escapeHtml(categoryLabel(product)) + '</p>' +
+        '<h1 class="detail-name">' + escapeHtml(product.name) + '</h1>' +
+      '</div>' +
+      '</div>';
   }
 
   function initGallery(root) {
     const track = root.querySelector(".gallery-track");
     if (!track) return;
+
     const dots = Array.prototype.slice.call(root.querySelectorAll(".gallery-dot"));
 
     function mark(index) {
@@ -242,19 +257,25 @@ function formatText(value) {
       dot.addEventListener("click", function () {
         const index = Number(dot.dataset.index);
         const left = index * track.clientWidth;
+
         if (track.scrollTo) track.scrollTo({ left: left, behavior: "smooth" });
         else track.scrollLeft = left;
+
         mark(index);
       });
     });
 
     let waiting = false;
+
     track.addEventListener("scroll", function () {
       if (waiting) return;
       waiting = true;
+
       window.requestAnimationFrame(function () {
         waiting = false;
-        if (track.clientWidth) mark(Math.round(track.scrollLeft / track.clientWidth));
+        if (track.clientWidth) {
+          mark(Math.round(track.scrollLeft / track.clientWidth));
+        }
       });
     });
   }
