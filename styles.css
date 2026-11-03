@@ -182,12 +182,13 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
 .gallery-track{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none}
 .gallery-track::-webkit-scrollbar{display:none}
 .gallery-slide{flex:0 0 100%;scroll-snap-align:center}
+/* Titik indikator galeri */
 .gallery-dots{
   display:flex;
   justify-content:center;
   align-items:center;
   gap:7px;
-  padding:12px 0;
+  margin-top:12px;
 }
 
 .gallery-dot{
@@ -204,6 +205,11 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
 .gallery-dot.active{
   width:20px;
   background:var(--olive);
+}
+
+/* Teks yang menumpuk di atas foto, khusus tampilan HP */
+.detail-photo-caption{
+  display:none;
 }
 
 .detail-actions{margin-top:26px}
@@ -255,8 +261,62 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
   .detail-layout{grid-template-columns:1fr;gap:0}
   .detail-info{padding-top:0}
   body[data-page="detail"] .page-section{padding-top:0}
-  .detail-visual{position:relative;margin:0 calc(var(--gutter) * -1)}
-  .detail-visual .product-visual{max-height:75vh}
+    /* Gradasi di bagian bawah foto */
+  .detail-visual::after{
+    content:"";
+    position:absolute;
+    left:0;
+    right:0;
+    bottom:0;
+    height:20%;
+    background:linear-gradient(
+      to bottom,
+      rgba(255,254,250,0),
+      #fffefa
+    );
+    pointer-events:none;
+    z-index:1;
+  }
+
+  /* Kategori dan judul menumpuk di atas gradasi */
+  .detail-photo-caption{
+    display:block;
+    position:absolute;
+    left:var(--gutter);
+    right:var(--gutter);
+    bottom:42px;
+    z-index:2;
+  }
+
+  .detail-photo-caption .product-category{
+    color:var(--olive);
+    font-size:12px;
+    letter-spacing:.8px;
+    margin:0 0 3px;
+  }
+
+  .detail-photo-caption .detail-name{
+    color:var(--ink);
+    font-size:24px;
+    line-height:1.25;
+    margin:0;
+  }
+
+  /* Sembunyikan judul dan kategori versi desktop di HP */
+  .detail-info > .product-category,
+  .detail-info > .detail-name{
+    display:none;
+  }
+
+  /* Titik galeri berada di bawah judul */
+  .detail-visual .gallery-dots{
+    position:absolute;
+    left:0;
+    right:0;
+    bottom:12px;
+    z-index:3;
+    margin:0;
+  }
 }
 @media(max-width:720px){
   .site-header{min-height:66px}
