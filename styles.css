@@ -443,4 +443,18 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
     padding: 7px 6px;
     font-size: 12px;
   }
+  .admin-wa-button {
+  flex-direction: column;
+  gap: 3px;
+}
+
+.admin-wa-label {
+  font-weight: 600;
+}
+
+.admin-wa-note {
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--muted);
+}
 }
