@@ -341,14 +341,14 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
 
   /* Titik galeri berada di bawah foto */
 .detail-visual .gallery-dots{
-  position:relative;
-  left:auto;
-  right:auto;
+  position:absolute;
+  left:0;
+  right:0;
+  top:12px;
   bottom:auto;
   z-index:3;
-  margin:10px 0 0;
+  margin:0;
 }
-  }
 }
 
 @media(max-width:720px){
