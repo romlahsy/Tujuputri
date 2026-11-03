@@ -496,22 +496,26 @@ if (product.external && extUrl) {
 function adminButton(admin, label) {
   const wa = whatsappUrl(product, admin);
 
+  const content =
+    '<span class="admin-wa-label">' + label + '</span>' +
+    '<span class="admin-wa-note">via WhatsApp</span>';
+
   if (!wa) {
     return '<button class="admin-wa-button" type="button" data-toast="Nomor WhatsApp admin belum tersedia.">' +
-      label + '</button>';
+      content + '</button>';
   }
 
   return '<a class="admin-wa-button" href="' + escapeHtml(wa) +
-    '" target="_blank" rel="noopener noreferrer">' + label + '</a>';
+    '" target="_blank" rel="noopener noreferrer">' + content + '</a>';
 }
 
 const adminActions =
   '<section class="admin-contact">' +
-    '<h3>Mau pesan atau tanya dulu?</h3>' +
-    '<p>Pilih admin yang ingin kamu hubungi.</p>' +
+    '<h3>Mau pesan atau tanya-tanya dulu?</h3>' +
+    '<p>Pilih admin sesuai yang ingin kamu hubungi.</p>' +
     '<div class="admin-contact-grid">' +
-      adminButton("ikhwan", "Pesan ke Admin Ikhwan") +
-      adminButton("akhwat", "Pesan ke Admin Akhwat") +
+      adminButton("ikhwan", "Admin Ikhwan") +
+      adminButton("akhwat", "Admin Akhwat") +
     '</div>' +
   '</section>';
 
