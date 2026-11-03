@@ -494,9 +494,9 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
 }
 
 .admin-wa-note {
+  color: #e2e0d5 !important;
   font-size: 11px;
   font-weight: 400;
-  color: var(--muted);
 }
   /* Hierarki informasi halaman detail produk */
 .detail-more {
@@ -523,4 +523,7 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
 .detail-more h2:not(:first-child) {
   margin-top: 26px;
 }
+  .detail-more {
+  border-top: 1px solid #d6d1c5 !important;
+  }
 }
