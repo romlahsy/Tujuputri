@@ -485,4 +485,29 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
   font-weight: 400;
   color: var(--muted);
 }
+  /* Hierarki informasi halaman detail produk */
+.detail-more {
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+}
+
+.detail-more h2 {
+  font-size: 16px;
+  line-height: 1.4;
+  font-weight: 700;
+  color: var(--olive);
+  margin: 0 0 12px;
+}
+
+.detail-text p,
+.detail-text ul {
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+/* Jarak antarbagian spesifikasi */
+.detail-more h2:not(:first-child) {
+  margin-top: 26px;
+}
 }
