@@ -258,10 +258,26 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
   .category-grid{grid-template-columns:repeat(2,1fr)}
 }
 @media(max-width:800px){
-  .detail-layout{grid-template-columns:1fr;gap:0}
-  .detail-info{padding-top:0}
-  body[data-page="detail"] .page-section{padding-top:0}
-    /* Gradasi di bagian bawah foto */
+  .detail-layout{
+    grid-template-columns:1fr;
+    gap:0;
+  }
+
+  .detail-info{
+    padding-top:0;
+  }
+
+  body[data-page="detail"] .page-section{
+    padding-top:0;
+  }
+
+  /* Wadah foto menjadi acuan posisi */
+  .detail-visual{
+    position:relative;
+    width:100%;
+  }
+
+  /* Gradasi menyatu dengan bagian bawah foto */
   .detail-visual::after{
     content:"";
     position:absolute;
@@ -278,7 +294,7 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
     z-index:1;
   }
 
-  /* Kategori dan judul menumpuk di atas gradasi */
+  /* Judul dan kategori di atas gradasi */
   .detail-photo-caption{
     display:block;
     position:absolute;
@@ -302,13 +318,13 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
     margin:0;
   }
 
-  /* Sembunyikan judul dan kategori versi desktop di HP */
+  /* Sembunyikan judul dan kategori versi desktop */
   .detail-info > .product-category,
   .detail-info > .detail-name{
     display:none;
   }
 
-  /* Titik galeri berada di bawah judul */
+  /* Titik galeri menumpuk di atas foto */
   .detail-visual .gallery-dots{
     position:absolute;
     left:0;
@@ -361,4 +377,70 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
 @media(prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   *{transition:none!important}
+}
+/* Pilihan admin WhatsApp */
+.admin-contact {
+  margin-top: 20px;
+}
+
+.admin-contact h3 {
+  margin: 0 0 4px;
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.admin-contact p {
+  margin: 0 0 10px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.admin-contact-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.admin-wa-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  padding: 8px 10px;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  background: #f7f6f1;
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.35;
+  text-align: center;
+  text-decoration: none;
+}
+
+.admin-wa-button:hover {
+  background: #eeede5;
+}
+
+.admin-contact-mobile {
+  display: none;
+}
+
+/* Khusus HP: pilihan admin pindah setelah spesifikasi */
+@media (max-width: 620px) {
+  .detail-actions > .admin-contact {
+    display: none;
+  }
+
+  .admin-contact-mobile {
+    display: block;
+    margin-top: 20px;
+    margin-bottom: 24px;
+  }
+
+  .admin-wa-button {
+    min-height: 40px;
+    padding: 7px 6px;
+    font-size: 12px;
+  }
 }
