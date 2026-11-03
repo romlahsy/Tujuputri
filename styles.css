@@ -526,4 +526,9 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
   .detail-more {
   border-top: 1px solid #d6d1c5 !important;
   }
+  
+}@media (max-width: 620px) {
+  body[data-page="detail"] .detail-more {
+    padding-top: 14px !important;
+  }
 }
