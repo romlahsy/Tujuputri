@@ -1,0 +1,285 @@
+/*
+  ============================================================
+  STYLES WEBSITE TUJUPUTRI  (styles.css)  -  Versi 2
+  Konsep: Warm Minimalist + Modern Clean
+  Font dimuat lewat tag <link> di setiap file HTML
+  (DM Sans untuk judul dan isi; hierarki lewat ukuran & ketebalan).
+  ============================================================
+  TIPS UBAH CEPAT:
+  - Ganti warna  : ubah nilai di bagian :root di bawah ini.
+  - Ukuran tulisan isi: ubah angka "17px" pada body.
+*/
+
+/* ---------- WARNA & PENGATURAN DASAR ---------- */
+:root{
+  --ivory:#f8f7f2; --white:#fffefa; --beige:#e9e3d8;
+  --sage:#a3a58b; --olive:#6a6e53; --olive-dark:#575b43;
+  --mocha:#7a6755; --ink:#35352f; --muted:#66655d; --line:#e8e5dc;
+  --gutter:max(5vw,20px,calc((100vw - 1180px) / 2)); /* jarak kiri-kanan halaman */
+  --font-heading:"DM Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --font-body:"DM Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--white);color:var(--ink);font:17px/1.7 var(--font-body);-webkit-font-smoothing:antialiased}
+/* Footer selalu di dasar layar; jika isi halaman pendek, ruang kosong ada di atas footer */
+body{display:flex;flex-direction:column;min-height:100vh;min-height:100dvh}
+main{flex:1 0 auto}
+img{max-width:100%;display:block}
+h1,h2,h3,p{margin:0}
+a{color:inherit;text-decoration:none}
+button,input{font:inherit}
+[hidden]{display:none!important}
+a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(--sage);outline-offset:2px}
+
+/* ---------- BAR INFO DI ATAS BERANDA ---------- */
+.info-bar{background:var(--olive);color:#fff;text-align:center;font-size:13px;font-weight:500;line-height:1.3;padding:5px var(--gutter)}
+
+/* ---------- HEADER & NAVIGASI ---------- */
+.site-header{min-height:72px;padding:0 var(--gutter);display:flex;align-items:center;justify-content:space-between;background:rgba(255,254,250,.96);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:10;backdrop-filter:blur(12px)}
+.brand{display:flex;align-items:center;gap:10px}
+.brand-mark{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:var(--sage);color:#fff;font:700 19px var(--font-heading)}
+.brand-name{font:700 25px var(--font-heading);letter-spacing:-.3px}
+.main-nav{display:flex;gap:30px;font-size:16px;font-weight:500}
+.main-nav a{padding:8px 2px;border-bottom:2px solid transparent;color:#4d4c45}
+.main-nav a:hover{color:var(--olive)}
+.main-nav a[aria-current="page"]{color:var(--olive);border-bottom-color:var(--olive)}
+.menu-toggle{display:none;border:0;background:none;color:var(--ink);font-size:26px;line-height:1;cursor:pointer;width:46px;height:46px;border-radius:8px}
+
+/* ---------- DROP-DOWN KATEGORI ---------- */
+.nav-dropdown{position:relative}
+.nav-drop-toggle{display:inline-flex;align-items:center;gap:6px;border:0;background:none;color:#4d4c45;font:inherit;font-weight:500;padding:8px 2px;border-bottom:2px solid transparent;cursor:pointer}
+.nav-drop-toggle:hover{color:var(--olive)}
+.nav-drop-toggle svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;transition:transform .2s}
+.nav-drop-toggle[aria-expanded="true"] svg{transform:rotate(180deg)}
+.nav-drop-menu{position:absolute;top:100%;left:-14px;min-width:230px;background:var(--white);border:1px solid var(--line);box-shadow:0 12px 30px #35352f1a;padding:6px 0;z-index:12}
+.main-nav .nav-drop-menu a{display:block;padding:10px 18px;border-bottom:0}
+.main-nav .nav-drop-menu a:hover{background:var(--ivory)}
+
+/* ---------- TOMBOL ---------- */
+.button{display:inline-flex;align-items:center;justify-content:center;gap:14px;min-height:50px;padding:13px 24px;border-radius:6px;font-size:16px;font-weight:700;border:0;cursor:pointer;transition:transform .2s,background .2s}
+.button:hover{transform:translateY(-2px)}
+.button-dark{background:var(--ink);color:#fff}
+.button-light{background:var(--ivory);color:var(--ink);white-space:nowrap}
+.button-wa{background:var(--olive);color:#fff}
+.button-wa:hover{background:var(--olive-dark)}
+
+/* ---------- BERANDA: HERO ---------- */
+.hero{background:var(--ivory);padding:40px var(--gutter);display:grid;grid-template-columns:1fr 1fr;gap:4vw;align-items:center;overflow:hidden}
+.eyebrow{font-size:15px;letter-spacing:1.2px;font-weight:700;color:var(--olive);margin-bottom:8px;text-transform:uppercase}
+.hero h1{font:700 clamp(36px,4.6vw,56px)/1.15 var(--font-heading);letter-spacing:-.5px}
+.hero h1 em,.page-head h1 em{font-family:Georgia,serif;font-weight:400;color:var(--mocha)}
+.hero-description{font-size:18px;line-height:1.7;color:var(--muted);max-width:460px;margin:14px 0 20px}
+.hero-note{margin-top:18px;font-size:16px;color:var(--muted);display:flex;align-items:center;gap:10px}
+.note-dot{width:8px;height:8px;background:var(--sage);border-radius:50%;flex:none}
+.hero-art{height:340px;position:relative;display:grid;place-items:center}
+.hero-shape{position:absolute;border-radius:50%}
+.shape-one{width:290px;height:290px;background:#e8e2d6;right:8%;top:5%}
+.shape-two{width:170px;height:170px;background:#c9c9b6;left:8%;bottom:1%;opacity:.65}
+.hero-stack{position:relative;width:260px;height:270px;transform:rotate(-5deg)}
+.stack-card{position:absolute;box-shadow:0 20px 40px #514b3c18}
+.stack-book{z-index:2;width:155px;height:205px;background:#8b8d73;left:7px;top:22px;transform:rotate(-9deg);padding:22px;color:#fff9ed;display:flex;flex-direction:column;justify-content:space-between}
+.stack-book b{font:700 22px/1.15 var(--font-heading)}
+.stack-book small{font-size:10px;letter-spacing:2px}
+.mini-line{width:28px;height:1px;background:#fff9ed}
+.stack-fabric{width:145px;height:185px;background:repeating-linear-gradient(45deg,#d7c8b5 0 8px,#e6dccc 8px 16px);right:0;top:45px;transform:rotate(12deg)}
+.fabric-stitch{position:absolute;inset:10px;border:1px dashed #a99883}
+.stack-paper{z-index:3;width:125px;height:150px;background:#f7f1e5;right:7px;bottom:-10px;transform:rotate(8deg);padding:18px;color:var(--mocha);display:flex;flex-direction:column;justify-content:space-between}
+.stack-paper b{font:italic 21px Georgia,serif}
+.paper-flower{font-size:25px;color:var(--olive)}
+.hero-label{position:absolute;font-size:13px;letter-spacing:1.5px;text-transform:uppercase;color:var(--mocha)}
+.label-top{right:2%;top:4%}
+.label-bottom{left:1%;bottom:5%}
+
+/* ---------- BAGIAN UMUM ---------- */
+.section-wrap{padding-left:var(--gutter);padding-right:var(--gutter)}
+.category-section{padding-top:40px;padding-bottom:40px}
+.products-section{padding-top:40px;padding-bottom:44px;background:#faf9f5}
+.section-heading{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;margin-bottom:18px}
+.section-heading h2{font:700 clamp(28px,3.2vw,38px)/1.2 var(--font-heading);letter-spacing:-.4px}
+.section-heading>p{font-size:16px;color:var(--muted)}
+.text-link{font-size:16px;font-weight:700;color:var(--olive);text-decoration:underline;text-underline-offset:3px}
+.text-link:hover{color:var(--olive-dark)}
+
+/* ---------- KARTU KATEGORI ---------- */
+.category-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.category-card{position:relative;display:block;text-align:left;border:1px solid var(--line);border-radius:12px;background:#fff;overflow:hidden;transition:transform .2s,box-shadow .2s}
+.category-card:hover{transform:translateY(-4px);box-shadow:0 12px 30px #35352f0f}
+.category-art{height:170px;display:block;position:relative;overflow:hidden}
+.category-meta{display:flex;flex-direction:column;padding:14px 16px 16px;gap:2px}
+.category-meta b{font:700 19px/1.3 var(--font-heading)}
+.category-meta small{font-size:16px;color:var(--muted)}
+
+/* Ilustrasi kategori */
+.art-fashion{background:#e9e2d6}
+.art-fabric{position:absolute;width:110px;height:145px;background:repeating-linear-gradient(0deg,#9b8b78 0 2px,#b9a895 2px 5px);left:calc(50% - 55px);top:22px;border-radius:48% 48% 8px 8px;transform:rotate(-8deg);box-shadow:16px 12px 0 #d0c2b0}
+.art-baby{background:#e9e9df}
+.art-baby-body{position:absolute;width:94px;height:108px;background:#c4c8b5;left:calc(50% - 47px);top:35px;border-radius:24px 24px 36px 36px}
+.art-baby-sleeve{position:absolute;width:130px;height:35px;border-radius:30px;background:#d7d8c9;left:calc(50% - 65px);top:51px;transform:rotate(-18deg)}
+.art-books{background:#eee7dc}
+.book{position:absolute;width:73px;height:115px;bottom:22px;border-radius:3px 7px 7px 3px;box-shadow:5px 7px 10px #40392b20}
+.book-a{background:#8d9279;left:calc(50% - 76px);transform:rotate(-12deg)}
+.book-b{background:#b78f73;left:calc(50% - 28px);height:130px;transform:rotate(4deg)}
+.book-c{background:#d4c8b5;left:calc(50% + 20px);transform:rotate(12deg)}
+.art-creative{background:#e6e7dc}
+.creative-calendar{position:absolute;width:92px;height:112px;background:#f8f5ec;border:7px solid #a0a38a;left:calc(50% - 58px);top:30px;transform:rotate(-7deg);box-shadow:8px 9px 0 #d2d3c4}
+.creative-bookmark{position:absolute;width:35px;height:110px;background:#927e68;right:calc(50% - 74px);top:48px;transform:rotate(11deg);clip-path:polygon(0 0,100% 0,100% 100%,50% 82%,0 100%)}
+.art-generic{background:#e9e6dc}
+.art-generic::after{content:"";position:absolute;width:90px;height:90px;border-radius:50%;background:#c9c9b6;left:calc(50% - 45px);top:40px}
+
+/* ---------- KARTU PRODUK ---------- */
+.product-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px 20px}
+.product-card{display:flex;flex-direction:column;min-width:0}
+.product-visual{aspect-ratio:1/1;border-radius:0;position:relative;overflow:hidden;background:var(--beige);display:grid;place-items:center}
+.product-visual img{width:100%;height:100%;object-fit:cover}
+.product-card .product-visual{transition:box-shadow .2s}
+.product-card:hover .product-visual{box-shadow:0 12px 28px #35352f1a}
+.product-placeholder{font:italic 20px/1.3 Georgia,serif;color:#6b6254;text-align:center;padding:20px}
+.product-placeholder small{display:block;font:13px var(--font-body);letter-spacing:1.5px;text-transform:uppercase;margin-top:8px}
+.product-category{font-size:14px;letter-spacing:.8px;text-transform:uppercase;color:var(--olive);font-weight:600;margin:12px 0 4px}
+.product-card .product-category{color:var(--muted);font-weight:500;margin:12px 0 2px}
+.product-name{font:500 17px/1.4 var(--font-heading);color:#45443e;margin:0 0 4px}
+.product-desc{font-size:16px;line-height:1.6;color:var(--muted);margin-bottom:10px;display:-webkit-box;-webkit-line-clamp:3;line-clamp:3;-webkit-box-orient:vertical;overflow:hidden} /* maksimal 3 baris di kartu */
+.product-bottom{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:4px 12px}
+.product-price{font-size:16px;font-weight:600}
+.product-price.price-ask{font-size:15px;font-weight:400;color:var(--muted)}
+.card-cta{font-size:16px;font-weight:700;color:var(--olive);text-decoration:underline;text-underline-offset:3px}
+.product-card:hover .card-cta{color:var(--olive-dark)}
+
+/* ---------- HALAMAN DALAM (katalog, kategori, detail) ---------- */
+.page-head{background:var(--ivory);border-bottom:1px solid var(--line);padding-top:14px;padding-bottom:16px}
+.page-head.compact{padding-top:10px;padding-bottom:10px}
+.page-head h1{font:600 clamp(22px,3vw,30px)/1.25 var(--font-heading);letter-spacing:-.2px;margin:6px 0 2px}
+.page-intro{font-size:15px;line-height:1.55;color:var(--muted);max-width:560px}
+.page-section{padding-top:22px;padding-bottom:44px}
+.breadcrumb{display:flex;flex-wrap:nowrap;align-items:center;gap:8px;font-size:15px;color:var(--muted);min-width:0}
+.breadcrumb a,.crumb-sep{flex:none;white-space:nowrap}
+.breadcrumb a{color:var(--olive);font-weight:600}
+.breadcrumb a:hover{text-decoration:underline}
+.breadcrumb [aria-current]{color:var(--ink);flex:0 1 auto;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.crumb-sep{color:#b5b3a8}
+
+.search-panel{display:flex;align-items:center;gap:14px;margin-bottom:16px}
+.search-panel label{font-size:16px;font-weight:700}
+.search-panel input{width:min(420px,100%);min-height:48px;border:1px solid #d6d3c8;border-radius:6px;padding:10px 14px;background:#fff;font-size:16px}
+.search-panel input:focus{border-color:var(--olive)}
+.filter-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+.filter-chip{min-height:44px;border:1px solid #d6d3c8;border-radius:30px;padding:8px 18px;background:transparent;color:#55544c;font-size:16px;font-weight:500;cursor:pointer}
+.filter-chip.active,.filter-chip:hover{background:var(--ink);border-color:var(--ink);color:#fff}
+.result-count{font-size:16px;color:var(--muted);margin-bottom:18px}
+.empty-state{font-size:17px;color:var(--muted);padding:28px 0}
+
+/* ---------- HALAMAN DETAIL PRODUK ---------- */
+.detail-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:44px;align-items:start;max-width:980px}
+.detail-info{padding-top:6px}
+.detail-info .product-category{margin-top:0}
+.detail-name{font:600 clamp(24px,3.2vw,30px)/1.3 var(--font-heading);letter-spacing:-.2px;margin:0 0 8px}
+.detail-price{font-size:20px;font-weight:600;margin-bottom:14px}
+.detail-price.price-ask{font-size:17px;font-weight:500;color:var(--muted)}
+.detail-desc{font-size:18px;line-height:1.8;color:var(--muted)}
+.detail-desc p,.detail-desc ul{margin:0 0 12px}
+.detail-desc ul{padding-left:24px}
+.gallery-track{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.gallery-track::-webkit-scrollbar{display:none}
+.gallery-slide{flex:0 0 100%;scroll-snap-align:center}
+.gallery-thumbs{display:flex;gap:8px;margin-top:10px;overflow-x:auto}
+.gallery-thumb{flex:0 0 64px;height:64px;padding:0;border:2px solid transparent;border-radius:0;overflow:hidden;background:var(--beige);cursor:pointer;opacity:.75}
+.gallery-thumb img{width:100%;height:100%;object-fit:cover}
+.gallery-thumb.active{border-color:var(--olive);opacity:1}
+.detail-actions{margin-top:26px}
+.detail-more{max-width:760px;margin-top:34px;padding-top:26px;border-top:1px solid var(--line)}
+.detail-more h2{font:700 22px/1.3 var(--font-heading);margin:0 0 12px}
+.detail-more h2:not(:first-child){margin-top:30px}
+.detail-text p,.detail-text ul{font-size:18px;line-height:1.8;color:#4a4943;margin:0 0 14px}
+.detail-text ul{padding-left:24px}
+.detail-text li{margin-bottom:6px}
+.spec-list{margin:0;border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.spec-row{display:grid;grid-template-columns:minmax(110px,32%) 1fr;gap:16px;padding:12px 16px;font-size:17px;line-height:1.5}
+.spec-row:nth-child(odd){background:#faf9f5}
+.spec-row dt{font-weight:600;color:var(--muted)}
+.spec-row dd{margin:0}
+.detail-empty{padding:30px 0;max-width:520px}
+.detail-empty p{margin:8px 0 22px;color:var(--muted);font-size:18px}
+
+/* ---------- AJAKAN KE KATALOG (beranda) ---------- */
+.cta-strip{margin:0 var(--gutter) 40px;padding:28px 32px;background:var(--ink);color:#fff;border-radius:14px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.cta-strip .eyebrow{color:#c9ccb0}
+.cta-strip h2{font:700 clamp(26px,3vw,34px)/1.2 var(--font-heading)}
+.cta-strip p:last-child{font-size:16px;color:#d4d1c7;margin-top:6px}
+
+/* ---------- FOOTER ---------- */
+.site-footer{padding:14px var(--gutter) 16px;border-top:1px solid var(--line);text-align:center}
+.social-links{display:flex;justify-content:center;gap:10px;margin-bottom:10px}
+.social-link{width:38px;height:38px;border-radius:50%;border:1px solid #d6d3c8;display:grid;place-items:center;color:var(--ink);transition:.2s}
+.social-link:hover{background:var(--ink);border-color:var(--ink);color:#fff}
+.social-link svg{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.footer-copy{font-size:14px;font-weight:600;color:var(--ink)}
+.footer-text{font-size:13px;line-height:1.5;color:var(--muted)}
+
+/* ---------- PEMBERITAHUAN KECIL ---------- */
+.toast{position:fixed;bottom:24px;left:50%;transform:translate(-50%,20px);background:var(--ink);color:#fff;padding:14px 20px;border-radius:8px;font-size:15px;max-width:calc(100vw - 32px);text-align:center;opacity:0;pointer-events:none;transition:.25s;z-index:20}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+
+/* ============================================================
+   TAMPILAN TABLET & HP
+   ============================================================ */
+@media(max-width:1000px){
+  .product-grid{grid-template-columns:repeat(3,1fr)}
+}
+@media(max-width:900px){
+  .hero{padding-top:44px;padding-bottom:44px}
+  .category-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:800px){
+  .detail-layout{grid-template-columns:1fr;gap:0}
+  .detail-info{padding-top:0}
+  body[data-page="detail"] .page-section{padding-top:0}
+  .detail-visual{position:relative;margin:0 calc(var(--gutter) * -1)}
+  .detail-visual .product-visual{max-height:75vh}
+  .detail-visual::after{content:"";position:absolute;left:0;right:0;bottom:0;height:20%;background:linear-gradient(to bottom,rgba(255,254,250,0),#fffefa);pointer-events:none;z-index:1}
+  .gallery-thumbs{position:absolute;z-index:2;left:var(--gutter);right:var(--gutter);bottom:12px;margin:0}
+}
+@media(max-width:720px){
+  .site-header{min-height:66px}
+  .main-nav{display:none;position:absolute;top:100%;left:0;right:0;padding:12px var(--gutter) 18px;background:var(--white);border-bottom:1px solid var(--line);flex-direction:column;gap:2px;font-size:18px}
+  .main-nav.open{display:flex}
+  .main-nav a{padding:12px 0;border-bottom:0}
+  .menu-toggle{display:block}
+  .nav-dropdown{width:100%}
+  .nav-drop-toggle{width:100%;justify-content:space-between;padding:12px 0}
+  .nav-drop-menu{position:static;min-width:0;border:0;box-shadow:none;padding:0 0 6px 14px}
+  .main-nav .nav-drop-menu a{padding:10px 0;font-size:17px}
+  .product-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:620px){
+  body{font-size:16px}
+  .brand-name{font-size:23px}
+  .hero{grid-template-columns:1fr;padding-top:26px;padding-bottom:10px;gap:0}
+  .hero-description{font-size:17px}
+  .hero-art{height:235px}
+  .hero-stack{transform:scale(.82) rotate(-5deg)}
+  .shape-one{width:230px;height:230px}
+  .category-section{padding-top:28px;padding-bottom:28px}
+  .products-section{padding-top:28px;padding-bottom:32px}
+  .section-heading{align-items:flex-start;flex-direction:column;gap:4px;margin-bottom:14px}
+  .category-grid{gap:12px}
+  .category-art{height:130px}
+  .category-meta{padding:12px 12px 14px}
+  .category-meta b{font-size:16px}
+  .category-meta small{font-size:15px}
+  .product-grid{gap:20px 12px}
+  .product-name{font-size:16px}
+  .product-desc{font-size:15px}
+  .product-placeholder{font-size:17px;padding:12px}
+  .product-bottom{flex-direction:column;align-items:flex-start}
+  .page-section{padding-top:18px;padding-bottom:32px}
+  .search-panel{flex-direction:column;align-items:flex-start;gap:6px}
+  .search-panel input{width:100%}
+  .detail-actions .button{width:100%}
+  .cta-strip{margin-bottom:28px;padding:22px 20px;flex-direction:column;align-items:flex-start}
+  .cta-strip .button{width:100%}
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *{transition:none!important}
+}

@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Detail produk Tujuputri.">
+  <meta name="theme-color" content="#f8f7f2">
+  <title>Detail Produk | Tujuputri</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=2">
+</head>
+<!-- Satu halaman untuk semua produk. Alamatnya: detail.html?id=ID-PRODUK (id dari config.js) -->
+<body data-page="detail">
+
+  <!-- HEADER & NAVIGASI (sama di semua halaman) -->
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="Tujuputri, kembali ke beranda">
+      <span class="brand-mark">T</span>
+      <span class="brand-name">Tujuputri</span>
+    </a>
+    <nav class="main-nav" id="main-nav" aria-label="Navigasi utama">
+      <a href="index.html">Beranda</a>
+      <a href="index.html#kategori">Kategori</a>
+      <a href="produk.html">Produk</a>
+    </nav>
+    <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Buka menu" aria-expanded="false" aria-controls="main-nav">☰</button>
+  </header>
+
+  <main>
+    <!-- JEJAK HALAMAN (diisi otomatis) -->
+    <section class="page-head compact section-wrap">
+      <nav class="breadcrumb" id="breadcrumb" aria-label="Jejak halaman"></nav>
+    </section>
+
+    <!-- DETAIL PRODUK (diisi otomatis dari config.js) -->
+    <section class="page-section section-wrap">
+      <div id="detail"></div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="social-links" id="social-links" hidden></div>
+    <p class="footer-copy">© 2026 Tujuputri.</p>
+    <p class="footer-text">Satu tempat untuk berbagai kebutuhan keluarga.</p>
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="config.js?v=2"></script>
+  <script src="script.js?v=2"></script>
+</body>
+</html>

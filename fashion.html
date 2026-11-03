@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Fashion Dewasa di Tujuputri: daster dan pakaian dalam dewasa.">
+  <meta name="theme-color" content="#f8f7f2">
+  <title>Fashion Dewasa | Tujuputri</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=2">
+</head>
+<!-- Halaman kategori: ganti data-category sesuai id kategori di config.js -->
+<body data-page="category" data-category="fashion">
+
+  <!-- HEADER & NAVIGASI (sama di semua halaman) -->
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="Tujuputri, kembali ke beranda">
+      <span class="brand-mark">T</span>
+      <span class="brand-name">Tujuputri</span>
+    </a>
+    <nav class="main-nav" id="main-nav" aria-label="Navigasi utama">
+      <a href="index.html">Beranda</a>
+      <a href="index.html#kategori">Kategori</a>
+      <a href="produk.html">Produk</a>
+    </nav>
+    <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Buka menu" aria-expanded="false" aria-controls="main-nav">☰</button>
+  </header>
+
+  <main>
+    <!-- JUDUL KATEGORI (diisi otomatis dari config.js) -->
+    <section class="page-head section-wrap">
+      <nav class="breadcrumb" id="breadcrumb" aria-label="Jejak halaman"></nav>
+      <h1 id="category-title">Fashion Dewasa</h1>
+      <p class="page-intro" id="category-intro"></p>
+    </section>
+
+    <!-- DAFTAR PRODUK KATEGORI -->
+    <section class="page-section section-wrap">
+      <div class="product-grid" id="product-grid"></div>
+      <p class="empty-state" id="empty-state" hidden>Produk di kategori ini akan segera hadir. <a class="text-link" href="produk.html">Lihat semua produk</a></p>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="social-links" id="social-links" hidden></div>
+    <p class="footer-copy">© 2026 Tujuputri.</p>
+    <p class="footer-text">Satu tempat untuk berbagai kebutuhan keluarga.</p>
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="config.js?v=2"></script>
+  <script src="script.js?v=2"></script>
+</body>
+</html>
