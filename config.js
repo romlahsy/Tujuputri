@@ -138,11 +138,11 @@ Daster dengan model longgar yang nyaman untuk menemani aktivitas sehari-hari.
     ["Panjang lengan", "±14 cm"]
   ],
   price: 60000,
-  image: "images/daster-kings-standar-1.webp",
+  image: "images/kings-standar-1.webp",
   images: [
-    "images/daster-kings-standar-2.webp",
-    "images/daster-kings-standar-3.webp",
-    "images/daster-kings-standar-4.webp"
+    "images/kings-standar-2.webp",
+    "images/kings-standar-3.webp",
+    "images/kings-standar-4.webp"
   ],
   owner: "bapak",
   featured: true,
