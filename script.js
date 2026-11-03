@@ -74,12 +74,14 @@
     return safeUrl(config.links && config.links[product.external]);
   }
 
-  function whatsappUrl(product) {
-    const phone = cleanPhone(config.whatsapp && config.whatsapp[product.owner]);
-    if (!phone) return "";
-    const message = "Assalamu'alaikum, saya tertarik dengan " + product.name +
-      " di Tujuputri. Boleh minta info lebih lanjut?";
-    return "https://wa.me/" + phone + "?text=" + encodeURIComponent(message);
+  function whatsappUrl(product, admin) {
+  const phone = cleanPhone(config.whatsapp && config.whatsapp[admin]);
+  if (!phone) return "";
+
+  const message = "Assalamu'alaikum, saya tertarik dengan " + product.name +
+    " di Tujuputri. Boleh minta info lebih lanjut dan cara pemesanannya?";
+
+  return "https://wa.me/" + phone + "?text=" + encodeURIComponent(message);
   }
 
   function hasPrice(value) {
@@ -481,36 +483,53 @@ function formatText(value) {
     crumbs.push({ label: product.name });
     renderBreadcrumb(crumbs);
 
-    let action;
     const extUrl = externalUrl(product);
-    if (product.external && extUrl) {
-      action = '<a class="button button-dark" href="' + escapeHtml(extUrl) +
-        '" target="_blank" rel="noopener noreferrer">Kunjungi website</a>';
-    } else if (product.external) {
-      action = '<button class="button button-dark" type="button" data-toast="Tautan produk ini belum tersedia.">Kunjungi website</button>';
-    } else {
-      const wa = whatsappUrl(product);
-      if (wa) {
-        action = '<a class="button button-wa" href="' + escapeHtml(wa) +
-          '" target="_blank" rel="noopener noreferrer">Tanya / pesan via WhatsApp</a>';
-      } else {
-        console.warn("Tujuputri: nomor WhatsApp untuk '" + product.owner + "' belum diisi di config.js");
-        action = '<button class="button button-wa" type="button" data-toast="Nomor WhatsApp belum tersedia. Silakan coba lagi nanti.">Tanya / pesan via WhatsApp</button>';
-      }
-    }
+let websiteAction = "";
+
+if (product.external && extUrl) {
+  websiteAction = '<a class="button button-dark" href="' + escapeHtml(extUrl) +
+    '" target="_blank" rel="noopener noreferrer">Kunjungi website</a>';
+} else if (product.external) {
+  websiteAction = '<button class="button button-dark" type="button" data-toast="Tautan produk ini belum tersedia.">Kunjungi website</button>';
+}
+
+function adminButton(admin, label) {
+  const wa = whatsappUrl(product, admin);
+
+  if (!wa) {
+    return '<button class="admin-wa-button" type="button" data-toast="Nomor WhatsApp admin belum tersedia.">' +
+      label + '</button>';
+  }
+
+  return '<a class="admin-wa-button" href="' + escapeHtml(wa) +
+    '" target="_blank" rel="noopener noreferrer">' + label + '</a>';
+}
+
+const adminActions =
+  '<section class="admin-contact">' +
+    '<h3>Mau pesan atau tanya dulu?</h3>' +
+    '<p>Pilih admin yang ingin kamu hubungi.</p>' +
+    '<div class="admin-contact-grid">' +
+      adminButton("ikhwan", "Pesan ke Admin Ikhwan") +
+      adminButton("akhwat", "Pesan ke Admin Akhwat") +
+    '</div>' +
+  '</section>';
 
     root.innerHTML =
-      '<div class="detail-layout">' +
-        galleryHtml(product) +
-        '<div class="detail-info">' +
-          '<p class="product-category">' + escapeHtml(categoryLabel(product)) + "</p>" +
-          '<h1 class="detail-name">' + escapeHtml(product.name) + "</h1>" +
-          '<p class="detail-price' + (hasPrice(product.price) ? "" : " price-ask") + '">' + rupiah(product.price) + "</p>" +
-          '<div class="detail-desc">' + formatText(product.description) + "</div>" +
-          '<div class="detail-actions">' + action + "</div>" +
-        "</div>" +
-      "</div>" +
-      detailExtras(product);
+  '<div class="detail-layout">' +
+    galleryHtml(product) +
+    '<div class="detail-info">' +
+      '<p class="product-category">' + escapeHtml(categoryLabel(product)) + "</p>" +
+      '<h1 class="detail-name">' + escapeHtml(product.name) + "</h1>" +
+      '<p class="detail-price' + (hasPrice(product.price) ? "" : " price-ask") + '">' + rupiah(product.price) + "</p>" +
+      '<div class="detail-desc">' + formatText(product.description) + "</div>" +
+      '<div class="detail-actions">' + websiteAction + adminActions + "</div>" +
+    "</div>" +
+  "</div>" +
+  detailExtras(product) +
+  '<div class="admin-contact admin-contact-mobile">' +
+    adminActions.replace('<section class="admin-contact">', '').replace('</section>', '') +
+  '</div>';
     initGallery(root);
   }
 
