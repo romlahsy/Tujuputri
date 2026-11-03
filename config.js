@@ -34,9 +34,9 @@ window.TUJUPUTRI_CONFIG = {
 
   /* ---------- NOMOR WHATSAPP ---------- */
   whatsapp: {
-    bapak: "6285270927388", // Nomor WhatsApp Bapak, contoh: "6281234567890"
-    kamu: "6282325640565"   // Nomor WhatsApp kamu,  contoh: "6289876543210"
-  },
+  ikhwan: "6285270927388",
+  akhwat: "6282325640565"
+},
 
   /* ---------- TAUTAN WEBSITE LUAR ----------
      Dipakai oleh produk yang punya  external: "nama"
