@@ -282,15 +282,62 @@ function formatText(value) {
     }).join("") + "</dl>";
   }
 
-  // Bagian di bawah foto/harga: deskripsi lengkap + spesifikasi (hanya jika diisi)
+    // Varian produk: foto, nama, dan status ketersediaan
+  function variantsList(variants) {
+    if (!Array.isArray(variants)) return "";
+
+    const items = variants.filter(function (v) {
+      return v &&
+        String(v.name || "").trim() &&
+        String(v.image || "").trim();
+    });
+
+    if (items.length === 0) return "";
+
+    return '<section class="variant-section">' +
+      '<h2>Pilihan Varian</h2>' +
+      '<div class="variant-grid">' +
+      items.map(function (v) {
+        const soldOut = v.available === false;
+
+        return '<div class="variant-card' +
+          (soldOut ? ' is-out-of-stock' : '') + '">' +
+          '<div class="variant-image">' +
+          '<img src="' + escapeHtml(v.image) +
+          '" alt="' + escapeHtml(v.name) +
+          '" loading="lazy">' +
+          '</div>' +
+          '<div class="variant-info">' +
+          '<p class="variant-name">' + escapeHtml(v.name) + '</p>' +
+          '<span class="variant-status ' +
+          (soldOut ? 'status-sold-out' : 'status-available') + '">' +
+          (soldOut ? 'Stok Habis' : 'Tersedia') +
+          '</span>' +
+          '</div>' +
+          '</div>';
+      }).join("") +
+      '</div>' +
+      '</section>';
+  }
+  
+  // Bagian deskripsi, spesifikasi, dan varian produk
   function detailExtras(product) {
     const text = formatText(product.details);
     const specs = specsList(product.specs);
-    if (!text && !specs) return "";
+    const variants = variantsList(product.variants);
+
+    if (!text && !specs && !variants) return "";
+
     return '<div class="detail-more">' +
-      (text ? '<h2>Deskripsi produk</h2><div class="detail-text">' + text + "</div>" : "") +
-      (specs ? "<h2>Spesifikasi</h2>" + specs : "") +
-      "</div>";
+      (text
+        ? '<h2>Deskripsi produk</h2>' +
+          '<div class="detail-text">' + text + '</div>'
+        : '') +
+      (specs
+        ? '<h2>Spesifikasi</h2>' + specs
+        : '') +
+      variants +
+      '</div>';
   }
 
       /* ---------- GALERI FOTO (halaman detail) ---------- */
