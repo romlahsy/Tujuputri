@@ -249,7 +249,7 @@ Daster dengan model longgar yang nyaman untuk menemani aktivitas sehari-hari.
       details: "",
       specs: [],
       price: 8000,
-      image: "",
+      image: "images/safa-1.webp",
       owner: "kamu",
       featured: true,
       available: true,
