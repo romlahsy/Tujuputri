@@ -318,6 +318,14 @@ function formatText(value) {
       }).join("") +
       '</div>' +
       '</section>';
+    
+    '<p class="variant-hint">Geser untuk melihat varian lainnya</p>' +
+'<div class="variant-indicators">' +
+  items.map(function (_, i) {
+    return '<span class="variant-dot' +
+      (i === 0 ? ' active' : '') + '"></span>';
+  }).join('') +
+'</div>' +
   }
   
   // Bagian deskripsi, spesifikasi, dan varian produk
