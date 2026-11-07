@@ -142,10 +142,27 @@ Daster dengan model longgar yang nyaman untuk menemani aktivitas sehari-hari.
   ],
   price: 60000,
   image: "images/kings-standar-1.webp",
-  images: [
-    "images/kings-standar-2.webp",
-    "images/kings-standar-3.webp",
-    "images/kings-standar-4.webp"
+  variants: [
+    {
+      name: "Biru Tua",
+      image: "images/kings-standar-1.webp",
+      available: true
+    },
+    {
+      name: "Tosca",
+      image: "images/kings-standar-2.webp",
+      available: true
+    },
+    {
+      name: "Merah",
+      image: "images/kings-standar-3.webp",
+      available: true
+    },
+    {
+      name: "Hitam",
+      image: "images/kings-standar-4.webp",
+      available: true
+    }
   ],
   featured: true,
   available: true
