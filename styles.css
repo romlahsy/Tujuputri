@@ -1005,24 +1005,23 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
   display: flex;
   gap: 12px;
   overflow-x: auto;
-  scroll-snap-type: x mandatory;
+  scroll-snap-type: none;
+  scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
-  padding-bottom: 4px;
+  padding: 0 12px 6px;
 }
 
 .variant-grid::-webkit-scrollbar {
   display: none;
 }
 
-/* Kartu varian */
 .variant-card {
-  flex: 0 0 150px;
+  flex: 0 0 calc((100% - 12px) / 2);
   min-width: 0;
   border: 1px solid var(--line);
   background: var(--white);
   overflow: hidden;
-  scroll-snap-align: start;
   border-radius: 0;
 }
 
@@ -1076,6 +1075,33 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
 
 .variant-card.is-out-of-stock .variant-image img {
   opacity: 0.7;
+}
+
+.variant-hint {
+  margin: 9px 0 0;
+  font-size: 11px;
+  color: var(--muted);
+  text-align: center;
+}
+
+.variant-indicators {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 9px;
+}
+
+.variant-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--line);
+}
+
+.variant-dot.active {
+  background: var(--olive);
+  width: 16px;
+  border-radius: 0;
 }
 
 /* Tampilan HP: dua varian terlihat sekaligus */
