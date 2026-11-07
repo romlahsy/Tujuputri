@@ -147,7 +147,7 @@ Daster dengan model longgar yang nyaman untuk menemani aktivitas sehari-hari.
     "images/kings-standar-3.webp",
     "images/kings-standar-4.webp"
   ],
-  featured: false,
+  featured: true,
   available: true
 },
     
@@ -209,7 +209,7 @@ Daster dengan model longgar yang nyaman untuk menemani aktivitas sehari-hari.
       price: null,
       image: "",
       owner: "bapak",
-      featured: true,
+      featured: false,
       available: true
     },
     {
@@ -237,7 +237,7 @@ Daster dengan model longgar yang nyaman untuk menemani aktivitas sehari-hari.
       price: null,
       image: "",
       owner: "bapak",
-      featured: true,
+      featured: false,
       available: true
     },
     {
