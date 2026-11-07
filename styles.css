@@ -33,11 +33,63 @@ button,input{font:inherit}
 a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(--sage);outline-offset:2px}
 
 /* ---------- BAR INFO DI ATAS BERANDA ---------- */
-.info-bar{background:var(--olive);color:#fff;text-align:center;font-size:13px;font-weight:500;line-height:1.3;padding:5px var(--gutter)}
+.info-bar{
+  background:var(--olive);
+  color:#fff;
+  font-size:13px;
+  font-weight:500;
+  line-height:1.3;
+  padding:5px 0;
+  overflow:hidden;
+  white-space:nowrap;
+}
+
+.info-marquee{
+  width:100%;
+  overflow:hidden;
+}
+
+.info-marquee-track{
+  display:flex;
+  flex-wrap:nowrap;
+  width:max-content;
+  animation:info-scroll 28s linear infinite;
+  will-change:transform;
+}
+
+.info-marquee-group{
+  display:flex;
+  flex:0 0 auto;
+  width:max-content;
+  gap:0;
+  padding:0;
+}
+
+.info-marquee-group span{
+  display:block;
+  flex:none;
+  white-space:nowrap;
+  padding-right:150px;
+}
+
+@keyframes info-scroll{
+  from{
+    transform:translate3d(0,0,0);
+  }
+  to{
+    transform:translate3d(-50%,0,0);
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  .info-marquee-track{
+    animation:none;
+  }
+}
 
 /* ---------- HEADER & NAVIGASI ---------- */
 .site-header{min-height:72px;padding:0 var(--gutter);display:flex;align-items:center;justify-content:space-between;background:rgba(255,254,250,.96);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:10;backdrop-filter:blur(12px)}
-.brand{display:flex;align-items:center;gap:10px}
+.brand{display:flex;align-items:center;gap:10px;min-width:0}
+.brand-logo{display:block;width:46px;height:auto;max-height:46px;object-fit:contain;flex:none}
 .brand-mark{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:var(--sage);color:#fff;font:700 19px var(--font-heading)}
 .brand-name{font:700 25px var(--font-heading);letter-spacing:-.3px}
 .main-nav{display:flex;gap:30px;font-size:16px;font-weight:500}
@@ -64,8 +116,9 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
 .button-wa{background:var(--olive);color:#fff}
 .button-wa:hover{background:var(--olive-dark)}
 
-/* ---------- BERANDA: HERO ---------- */
-.hero{background:var(--ivory);padding:40px var(--gutter);display:grid;grid-template-columns:1fr 1fr;gap:4vw;align-items:center;overflow:hidden}
+.hero-copy {
+  max-width: 520px;
+}
 .eyebrow{font-size:15px;letter-spacing:1px;font-weight:700;color:var(--olive);margin-bottom:5px;text-transform:uppercase}
 .hero h1{font:700 clamp(36px,4.6vw,56px)/1.15 var(--font-heading);letter-spacing:-.5px}
 .hero h1 em,.page-head h1 em{font-family:Georgia,serif;font-weight:400;color:var(--mocha)}
@@ -103,9 +156,15 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
 
 /* ---------- KARTU KATEGORI ---------- */
 .category-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
-.category-card{position:relative;display:block;text-align:left;border:1px solid var(--line);border-radius:12px;background:#fff;overflow:hidden;transition:transform .2s,box-shadow .2s}
+.category-card{position:relative;display:block;text-align:left;border:1px solid var(--line);border-radius:0px;background:#fff;overflow:hidden;transition:transform .2s,box-shadow .2s}
 .category-card:hover{transform:translateY(-4px);box-shadow:0 12px 30px #35352f0f}
 .category-art{height:170px;display:block;position:relative;overflow:hidden}
+.category-photo {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
 .category-meta{display:flex;flex-direction:column;padding:14px 16px 16px;gap:2px}
 .category-meta b{font:700 19px/1.3 var(--font-heading)}
 .category-meta small{font-size:16px;color:var(--muted)}
@@ -129,7 +188,13 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
 
 /* ---------- KARTU PRODUK ---------- */
 .product-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px 20px}
-.product-card{display:flex;flex-direction:column;min-width:0}
+.product-card{
+  display:flex;
+  flex-direction:column;
+  min-width:0;
+  border:1px solid #e9e6dd;
+  background:transparent;
+}
 .product-visual{aspect-ratio:1/1;border-radius:0;position:relative;overflow:hidden;background:var(--beige);display:grid;place-items:center}
 .product-visual img{width:100%;height:100%;object-fit:cover}
 .product-card .product-visual{transition:box-shadow .2s}
@@ -137,13 +202,49 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
 .product-placeholder{font:italic 20px/1.3 Georgia,serif;color:#6b6254;text-align:center;padding:20px}
 .product-placeholder small{display:block;font:13px var(--font-body);letter-spacing:1.5px;text-transform:uppercase;margin-top:8px}
 .product-category{font-size:14px;letter-spacing:.8px;text-transform:uppercase;color:var(--olive);font-weight:600;margin:12px 0 4px}
-.product-card .product-category{color:var(--muted);font-weight:500;margin:12px 0 2px}
-.product-name{font:500 17px/1.4 var(--font-heading);color:#45443e;margin:0 0 4px}
+.product-card .product-category{
+  color:var(--muted);
+  font-size:11px;
+  font-weight:500;
+  letter-spacing:1px;
+  margin:12px 10px 4px;
+}
+
+.product-name{
+  font-size:17px;
+  font-weight:600;
+  line-height:1.4;
+  color:var(--ink);
+  margin:0 10px 7px;
+  letter-spacing:-.3px;
+}
 .product-desc{font-size:16px;line-height:1.6;color:var(--muted);margin-bottom:10px;display:-webkit-box;-webkit-line-clamp:3;line-clamp:3;-webkit-box-orient:vertical;overflow:hidden} /* maksimal 3 baris di kartu */
-.product-bottom{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:4px 12px}
-.product-price{font-size:16px;font-weight:600}
-.product-price.price-ask{font-size:15px;font-weight:400;color:var(--muted)}
-.card-cta{font-size:16px;font-weight:700;color:var(--olive);text-decoration:underline;text-underline-offset:3px}
+.product-bottom{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  gap:4px;
+  margin-top:auto;
+  padding:0 10px 10px;
+}
+.product-price{
+  font-size:18px;
+  font-weight:700;
+  color:var(--olive-dark);
+}
+
+.product-price.price-ask{
+  font-size:14px;
+  font-weight:400;
+  color:var(--muted);
+}
+.card-cta{
+  font-size:12px;
+  font-weight:500;
+  color:var(--olive);
+  text-decoration:underline;
+  text-underline-offset:3px;
+}
 .product-card:hover .card-cta{color:var(--olive-dark)}
 
 /* ---------- HALAMAN DALAM (katalog, kategori, detail) ---------- */
@@ -163,20 +264,63 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
 .search-panel label{font-size:16px;font-weight:700}
 .search-panel input{width:min(420px,100%);min-height:48px;border:1px solid #d6d3c8;border-radius:6px;padding:10px 14px;background:#fff;font-size:16px}
 .search-panel input:focus{border-color:var(--olive)}
-.filter-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
-.filter-chip{min-height:44px;border:1px solid #d6d3c8;border-radius:30px;padding:8px 18px;background:transparent;color:#55544c;font-size:16px;font-weight:500;cursor:pointer}
-.filter-chip.active,.filter-chip:hover{background:var(--ink);border-color:var(--ink);color:#fff}
+.filter-row{
+  display:flex;
+  gap:7px;
+  flex-wrap:wrap;
+  margin-bottom:14px;
+}
+
+.filter-chip{
+  min-height:34px;
+  border:1px solid #d6d3c8;
+  border-radius:30px;
+  padding:5px 13px;
+  background:transparent;
+  color:#55544c;
+  font-size:13px;
+  font-weight:500;
+  cursor:pointer;
+}
+
+.filter-chip.active,
+.filter-chip:hover{
+  background:var(--ink);
+  border-color:var(--ink);
+  color:#fff;
+}
 .result-count{font-size:16px;color:var(--muted);margin-bottom:18px}
 .empty-state{font-size:17px;color:var(--muted);padding:28px 0}
 
 /* ---------- HALAMAN DETAIL PRODUK ---------- */
 .detail-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:44px;align-items:start;max-width:980px}
 .detail-info{padding-top:6px}
-.detail-info .product-category{margin-top:0}
-.detail-name{font:600 clamp(24px,3.2vw,30px)/1.3 var(--font-heading);letter-spacing:-.2px;margin:0 0 8px}
-.detail-price{font-size:20px;font-weight:600;margin-bottom:14px}
-.detail-price.price-ask{font-size:17px;font-weight:500;color:var(--muted)}
-.detail-desc{font-size:16px;line-height:1.5;color:var(--muted)}
+.detail-info .product-category{
+  margin-top:0;
+  color:var(--muted);
+  font-size:11px;
+  font-weight:500;
+  letter-spacing:1px;
+}
+.detail-name{
+  font:600 22px/1.3 var(--font-heading);
+  letter-spacing:-.1px;
+  margin:0 0 8px;
+  color:var(--ink);
+}
+
+.detail-price{
+  font-size:22px;
+  font-weight:700;
+  margin-bottom:14px;
+  color:var(--olive-dark);
+}
+
+.detail-price.price-ask{
+  font-size:17px;
+  font-weight:500;
+  color:var(--muted);
+}.detail-desc{font-size:16px;line-height:1.5;color:var(--muted)}
 .detail-desc p,.detail-desc ul{margin:0 0 6px}
 .detail-desc ul{padding-left:20px}
 .gallery-track{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none}
@@ -242,11 +386,33 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
 .detail-empty p{margin:8px 0 22px;color:var(--muted);font-size:18px}
 
 /* ---------- AJAKAN KE KATALOG (beranda) ---------- */
-.cta-strip{margin:0 var(--gutter) 40px;padding:28px 32px;background:var(--ink);color:#fff;border-radius:14px;display:flex;align-items:center;justify-content:space-between;gap:20px}
-.cta-strip .eyebrow{color:#c9ccb0}
-.cta-strip h2{font:700 clamp(26px,3vw,34px)/1.2 var(--font-heading)}
-.cta-strip p:last-child{font-size:16px;color:#d4d1c7;margin-top:6px}
+.cta-strip{
+  margin:0 var(--gutter) 36px;
+  padding:20px 24px;
+  background:var(--ink);
+  color:#fff;
+  border-radius:12px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+}
 
+.cta-strip .eyebrow{
+  color:#c9ccb0;
+  font-size:11px;
+}
+
+.cta-strip h2{
+  font:700 clamp(21px,2.4vw,27px)/1.25 var(--font-heading);
+  margin:4px 0;
+}
+
+.cta-strip p:last-child{
+  font-size:14px;
+  color:#d4d1c7;
+  margin-top:4px;
+}
 /* ---------- FOOTER ---------- */
 .site-footer{padding:14px var(--gutter) 16px;border-top:1px solid var(--line);text-align:center}
 .social-links{display:flex;justify-content:center;gap:10px;margin-bottom:10px}
@@ -263,7 +429,7 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
 /* ============================================================
    TAMPILAN TABLET & HP
    ============================================================ */
-@media(max-width:1000px){
+@media(max-width:900px){
   .product-grid{grid-template-columns:repeat(3,1fr)}
 }
 @media(max-width:900px){
@@ -326,13 +492,14 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
 
   /* Teks kategori */
   body[data-page="detail"]
-  .detail-photo-caption
-  .product-category{
-    color:var(--olive);
-    font-size:11px;
-    letter-spacing:.5px;
-    margin:0 0 2px;
-  }
+.detail-photo-caption
+.product-category{
+  color:var(--muted);
+  font-size:11px;
+  font-weight:500;
+  letter-spacing:1px;
+  margin:0 0 2px;
+}
 
   /* Nama produk */
   body[data-page="detail"]
@@ -378,8 +545,31 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
 }
 @media(max-width:620px){
   body{font-size:16px}
+    .site-header{
+    min-height:60px;
+  }
+  .brand{
+    gap:7px;
+  }
+  .brand-logo{
+    width:38px;
+    max-height:38px;
+  }
+  .brand-name{
+    font-size:20px;
+  }
+  .menu-toggle{
+    width:40px;
+    height:40px;
+    font-size:20px;
+  }
   .brand-name{font-size:23px}
-  .hero{grid-template-columns:1fr;padding-top:26px;padding-bottom:10px;gap:0}
+  .hero {
+  min-height: 390px;
+  padding-top: 35px;
+  padding-bottom: 35px;
+  background-position: 62% center;
+  }
   .hero-description{font-size:17px}
   .hero-art{height:235px}
   .hero-stack{transform:scale(.82) rotate(-5deg)}
@@ -387,13 +577,20 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
   .category-section{padding-top:28px;padding-bottom:28px}
   .products-section{padding-top:28px;padding-bottom:32px}
   .section-heading{align-items:flex-start;flex-direction:column;gap:4px;margin-bottom:14px}
+    .section-heading .text-link{
+    font-size:14px;
+    font-weight:600;
+    }
   .category-grid{gap:12px}
   .category-art{height:130px}
   .category-meta{padding:12px 12px 14px}
   .category-meta b{font-size:16px}
   .category-meta small{font-size:15px}
   .product-grid{gap:20px 12px}
-  .product-name{font-size:16px}
+  .product-name{
+  font-size:16px;
+  font-weight:600;
+  }
   .product-desc{font-size:15px}
   .product-placeholder{font-size:17px;padding:12px}
   .product-bottom{flex-direction:column;align-items:flex-start}
@@ -403,6 +600,16 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
   .detail-actions .button{width:100%}
   .cta-strip{margin-bottom:28px;padding:22px 20px;flex-direction:column;align-items:flex-start}
   .cta-strip .button{width:100%}
+  .cta-strip{
+  padding:18px;
+  gap:12px;
+}
+.cta-strip h2{
+  font-size:21px;
+}
+.cta-strip p:last-child{
+  font-size:13px;
+}
 }
 @media(prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
@@ -425,15 +632,20 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
 }
 
 .admin-contact h3 {
-  margin: 0 0 4px;
-  font-size: 17px;
-  font-weight: 700;
+  margin: 0 0 5px;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: -0.2px;
+  line-height: 1.4;
 }
 
 .admin-contact p {
   margin: 0 0 10px;
   color: var(--muted);
-  font-size: 14px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 1.5;
 }
 
 .admin-contact-grid {
@@ -459,6 +671,24 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
   text-decoration: none;
 }
 
+.admin-wa-button {
+  flex-direction: column;
+  gap: 3px;
+}
+
+.admin-wa-label {
+  font-weight: 600;
+}
+.admin-gender-note {
+  font-size: 11px;
+  font-weight: 400;
+}
+
+.admin-wa-note {
+  font-size: 11px;
+  font-weight: 400;
+  color: #e2e0d5 !important;
+}
 .admin-wa-button:hover {
   background: #eeede5;
 }
@@ -531,4 +761,228 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
   body[data-page="detail"] .detail-more {
     padding-top: 14px !important;
   }
+}
+  /* HERO FOTO: BLEND KE BACKGROUND */
+.hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 390px;
+  padding: 55px var(--gutter);
+  background: var(--ivory);
+  overflow: hidden;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 58%;
+  height: 100%;
+  background: url("images/hero-tujuputri.webp") right center / cover no-repeat;
+
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 35%,
+    black 100%
+  );
+
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 35%,
+    black 100%
+  );
+}
+
+.hero-copy {
+  position: relative;
+  z-index: 1;
+  width: 50%;
+  max-width: 520px;
+}
+
+.hero-art {
+  display: none;
+}
+
+/* MOBILE: TANPA FOTO */
+@media (max-width: 620px) {
+  .hero {
+    min-height: auto;
+    background: var(--ivory);
+  }
+
+  .hero::before {
+    display: none;
+  }
+
+  .hero-copy {
+    width: 100%;
+  }
+}
+
+@media (min-width: 621px){
+  .info-marquee-group span{
+    padding-right:280px;
+  }
+}
+
+@media (min-width: 769px){
+  .detail-info .detail-name{
+    font-size:18px;
+    font-weight:500;
+  }
+
+  .detail-info .detail-price{
+    font-size:24px;
+    font-weight:700;
+  }
+}
+
+@media (min-width: 769px){
+  .detail-info .detail-name{
+    white-space:normal;
+    overflow-wrap:break-word;
+    word-break:normal;
+  }
+}
+
+/* Subjudul di dalam deskripsi produk */
+.detail-text p > strong:only-child {
+  display: inline-block;
+  font-size: 15px;
+  font-weight: 650;
+  color: var(--olive-dark);
+}
+
+/* Hierarki label tabel spesifikasi */
+.spec-row dt {
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 0;
+  color: var(--ink);
+}
+
+/* ---------- CUSTOM SORT DROPDOWN ---------- */
+
+.listing-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.listing-toolbar .result-count {
+  margin: 0;
+  flex: 1;
+}
+
+.sort-control {
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.sort-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  min-width: 0;
+  padding: 5px 9px;
+  border: 1.5px solid #d6d3c8;
+  border-radius: 6px;
+  background: #fff;
+  color: var(--ink);
+  font: inherit;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.sort-arrow {
+  width: 7px;
+  height: 7px;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: rotate(45deg);
+  margin-top: -4px;
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.sort-trigger[aria-expanded="true"] .sort-arrow {
+  transform: rotate(225deg);
+  margin-top: 4px;
+}
+
+.sort-options {
+  position: absolute;
+  top: calc(100% + 5px);
+  right: 0;
+  z-index: 20;
+  width: 125px;
+  padding: 5px;
+  border: 1px solid #e3e0d7;
+  border-radius: 7px;
+  background: #fff;
+  box-shadow: 0 5px 16px rgba(0,0,0,.08);
+}
+
+.sort-options[hidden] {
+  display: none;
+}
+
+.sort-options button {
+  display: block;
+  width: 100%;
+  padding: 9px 10px;
+  border: 0;
+  border-radius: 4px;
+  background: transparent;
+  color: var(--ink);
+  text-align: left;
+  font: inherit;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.sort-options button:hover,
+.sort-options button.active {
+  background: #f2f1eb;
+  color: var(--olive);
+}
+
+.sort-trigger:focus-visible,
+.sort-options button:focus-visible {
+  outline: 2px solid var(--olive);
+  outline-offset: 2px;
+}
+
+/* Tampilan HP */
+@media (max-width: 620px) {
+  .listing-toolbar {
+    gap: 8px;
+  }
+
+  .sort-control {
+    gap: 5px;
+    font-size: 13px;
+  }
+
+  .sort-control select {
+    min-height: 40px;
+    max-width: min(58vw, 250px);
+    padding: 7px 25px 7px 8px;
+    font-size: 13px;
+  }
+}
+
+.spec-row dd {
+  white-space: pre-line;
+}
+.spec-row dd strong {
+  font-weight: 550;
 }

@@ -14,19 +14,8 @@
 <!-- Satu halaman untuk semua produk. Alamatnya: detail.html?id=ID-PRODUK (id dari config.js) -->
 <body data-page="detail">
 
-  <!-- HEADER & NAVIGASI (sama di semua halaman) -->
-  <header class="site-header">
-    <a class="brand" href="index.html" aria-label="Tujuputri, kembali ke beranda">
-      <span class="brand-mark">T</span>
-      <span class="brand-name">Tujuputri</span>
-    </a>
-    <nav class="main-nav" id="main-nav" aria-label="Navigasi utama">
-      <a href="index.html">Beranda</a>
-      <a href="index.html#kategori">Kategori</a>
-      <a href="produk.html">Produk</a>
-    </nav>
-    <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Buka menu" aria-expanded="false" aria-controls="main-nav">☰</button>
-  </header>
+  <!-- Header bersama, dirender dari header.js -->
+  <div id="site-header"></div>
 
   <main>
     <!-- JEJAK HALAMAN (diisi otomatis) -->
@@ -49,6 +38,7 @@
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
   <script src="config.js?v=2"></script>
+  <script src="header.js?v=1"></script>
   <script src="script.js?v=2"></script>
 </body>
 </html>

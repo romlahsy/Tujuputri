@@ -70,28 +70,32 @@ window.TUJUPUTRI_CONFIG = {
       page: "fashion.html",
       label: "Fashion Dewasa",
       short: "Daster, sirwal, & pakaian dalam",
-      intro: "Pilihan pakaian dewasa yang nyaman untuk aktivitas sehari-hari."
+      intro: "Pilihan pakaian dewasa yang nyaman untuk aktivitas sehari-hari.",
+      image: "images/kategori-fashion.webp"
     },
     {
       id: "anak",
       page: "ibu-anak.html",
       label: "Ibu & Anak",
       short: "Pakaian bayi & anak",
-      intro: "Pilihan kebutuhan untuk ibu dan si kecil."
+      intro: "Pilihan kebutuhan untuk ibu dan si kecil.",
+      image: "images/kategori-ibu-anak.webp"
     },
     {
       id: "buku",
       page: "buku-islami.html",
       label: "Buku Islami",
       short: "Buku anak & dewasa",
-      intro: "Pilihan buku Islami untuk menambah ilmu dan wawasan."
+      intro: "Pilihan buku Islami untuk menambah ilmu dan wawasan.",
+      image: "images/kategori-buku-islami.webp"
     },
     {
       id: "kreatif",
       page: "kreasi.html",
       label: "Kreasi & Stationery",
       short: "Bookmark & kalender",
-      intro: "Produk kreasi dan stationery untuk melengkapi hari-harimu."
+      intro: "Produk kreasi dan stationery untuk melengkapi hari-harimu.",
+      image: "images/kategori-kreasi.webp"
     }
   ],
 
@@ -122,7 +126,6 @@ window.TUJUPUTRI_CONFIG = {
   name: "Daster KING'S Standar",
   category: "fashion",
   label: "Fashion Dewasa",
-  description: "",
   details: `
 Daster dengan model longgar yang nyaman untuk menemani aktivitas sehari-hari.
 
@@ -144,10 +147,43 @@ Daster dengan model longgar yang nyaman untuk menemani aktivitas sehari-hari.
     "images/kings-standar-3.webp",
     "images/kings-standar-4.webp"
   ],
-  owner: "bapak",
-  featured: true,
+  featured: false,
   available: true
 },
+    
+{
+  id: "daster-chibi-knaya",
+  name: "Daster Chibi K-Naya",
+  price: 50000,
+  image: "images/daster-chibi-k-naya-1.webp",
+  images: [
+    "images/daster-chibi-k-naya-2.webp",
+    "images/daster-chibi-k-naya-3.webp",
+    "images/daster-chibi-k-naya-4.webp",
+    "images/daster-chibi-k-naya-5.webp",
+    "images/daster-chibi-k-naya-6.webp",
+    "images/daster-chibi-k-naya-7.webp",
+    "images/daster-chibi-k-naya-8.webp"
+  ],
+  category: "fashion",
+  details: `
+    Daster Chibi K-Naya dengan pilihan 4 varian warna corak. Dilengkapi ritsleting pendek di bagian depan yang busui friendly serta tali di kedua sisi untuk menyesuaikan siluet pakaian.
+
+    **Fitur Produk:**
+    - 1 saku fungsional di sisi kanan.
+    - Ritsleting depan pendek (busui friendly).
+    - Tali di kedua sisi yang dapat diikat untuk menyesuaikan siluet.
+  `,
+  specs: [
+  ["Lebar Dada", "52 cm"],
+  ["Panjang Baju", "104 cm"],
+  ["Panjang Lengan", "16 cm"],
+  ["Varian", "Bunga: Kuning, oren, merah tua, dan hijau tua\nBulu: Merah dan mustard-gold"]
+],
+  featured: true,
+  available: true
+    },
+
     {
       id: "pakaian-dalam-dewasa",
       name: "Pakaian Dalam Dewasa",
@@ -212,7 +248,7 @@ Daster dengan model longgar yang nyaman untuk menemani aktivitas sehari-hari.
       description: "Bookmark magnetis untuk menemani halaman bacaan favorit.",
       details: "",
       specs: [],
-      price: null,
+      price: 8000,
       image: "",
       owner: "kamu",
       featured: true,
@@ -230,8 +266,39 @@ Daster dengan model longgar yang nyaman untuk menemani aktivitas sehari-hari.
       price: null,
       image: "",
       owner: "kamu",
-      featured: true,
-      available: true
-    }
+      featured: false,
+      available: false
+    },
+{
+  id: "sirwal-hitam-SMOOTHEZ",
+  name: "Sirwal SMOOTHEZ® by Aerie",
+  price: 55000,
+  image: "images/sirwal-smoothez-aerie-1.webp",
+  images: [
+    "images/sirwal-smoothez-aerie-2.webp",
+    "images/sirwal-smoothez-aerie-3.webp",
+    "images/sirwal-smoothez-aerie-4.webp"
+  ],
+  category: "fashion",
+  details: `
+    Sirwal berwarna hitam dengan model longgar yang nyaman digunakan untuk aktivitas sehari-hari. Terbuat dari bahan kain tebal, nyaman, dan tidak menerawang.
+    Dilengkapi beberapa jenis saku untuk menyimpan barang kecil agar lebih praktis.
+
+    **Fitur Produk:**
+    - Dilengkapi saku tersembunyi di kedua sisi.
+    - Memiliki 2 saku dengan penutup ritsleting.
+    - Terdapat 1 saku kecil dengan perekat untuk menyimpan barang kecil.
+    - Karet pinggang elastis dan dapat menyesuaikan.
+  `,
+  specs: [
+    ["Warna", "Hitam"],
+    ["Ukuran", "XL (UK 15–16 tahun / US XL)"],
+    ["Panjang Celana", "±82 cm"],
+    ["Lingkar Karet Pinggang", "±65 cm, elastis"],
+  ],
+  featured: true,
+  available: true
+}
+
   ]
 };

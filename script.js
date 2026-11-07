@@ -88,6 +88,79 @@
     return value !== "" && value != null && isFinite(Number(value));
   }
 
+    // ---------- PENGURUTAN PRODUK ----------
+  function sortProducts(list, mode) {
+    const sorted = list.slice();
+
+    if (mode === "price-low" || mode === "price-high") {
+      sorted.sort(function (a, b) {
+        const priceA = hasPrice(a.price) ? Number(a.price) : 0;
+        const priceB = hasPrice(b.price) ? Number(b.price) : 0;
+
+        return mode === "price-low"
+          ? priceA - priceB
+          : priceB - priceA;
+      });
+    } else if (mode === "name-az" || mode === "name-za") {
+      sorted.sort(function (a, b) {
+        const result = String(a.name || "").localeCompare(
+          String(b.name || ""),
+          "id",
+          { sensitivity: "base" }
+        );
+
+        return mode === "name-az" ? result : -result;
+      });
+    }
+
+    return sorted;
+  }
+
+  // ---------- DROPDOWN SORTING ----------
+  function setupSort(onSort) {
+    const trigger = $("#sort-trigger");
+    const label = $("#sort-label");
+    const options = $("#sort-options");
+
+    if (!trigger || !options) return;
+
+    const buttons = options.querySelectorAll("[data-sort]");
+
+    trigger.addEventListener("click", function () {
+      const isOpen = trigger.getAttribute("aria-expanded") === "true";
+
+      options.hidden = isOpen;
+      trigger.setAttribute("aria-expanded", String(!isOpen));
+    });
+
+    buttons.forEach(function (button) {
+      button.addEventListener("click", function () {
+        const mode = button.dataset.sort;
+
+        if (label) {
+          label.textContent =
+            mode === "default" ? "Urutkan" : button.textContent;
+        }
+
+        buttons.forEach(function (item) {
+          item.classList.toggle("active", item === button);
+        });
+
+        options.hidden = true;
+        trigger.setAttribute("aria-expanded", "false");
+
+        onSort(mode);
+      });
+    });
+
+    document.addEventListener("click", function (event) {
+      if (!event.target.closest(".sort-control")) {
+        options.hidden = true;
+        trigger.setAttribute("aria-expanded", "false");
+      }
+    });
+  }
+
   /* ---------- DAFTAR FOTO PRODUK ----------
      Foto utama = kolom image. Foto tambahan = kolom images (daftar).
      Foto pertama dipakai sebagai sampul di kartu produk. */
@@ -186,6 +259,18 @@ function formatText(value) {
 }
 
   // Spesifikasi: [["Bahan", "Katun"], ["Ukuran", "Jumbo"]]
+  function formatSpecValue(value) {
+  return String(value).split(/\r?\n/).map(function(line) {
+    const match = line.match(/^([^:]+:)\s*(.*)$/);
+
+    if (match) {
+      return "<strong>" + escapeHtml(match[1]) + "</strong> " + escapeHtml(match[2]);
+    }
+
+    return escapeHtml(line);
+  }).join("<br>");
+  }
+  
   function specsList(specs) {
     if (!Array.isArray(specs)) return "";
     const rows = specs.filter(function (r) {
@@ -193,7 +278,7 @@ function formatText(value) {
     });
     if (rows.length === 0) return "";
     return '<dl class="spec-list">' + rows.map(function (r) {
-      return '<div class="spec-row"><dt>' + escapeHtml(r[0]) + "</dt><dd>" + escapeHtml(r[1]) + "</dd></div>";
+      return '<div class="spec-row"><dt>' + escapeHtml(r[0]) + "</dt><dd>" + formatSpecValue(r[1]) + "</dd></div>";
     }).join("") + "</dl>";
   }
 
@@ -295,8 +380,9 @@ function formatText(value) {
     } else if (external) {
       attrs = 'href="#" data-toast="Tautan produk ini belum tersedia."';
       cta = "Kunjungi website";
-    } else {
+        } else {
       attrs = 'href="' + escapeHtml(detailHref(product)) + '"';
+      cta = "Lihat detail";
     }
 
     // Kartu sengaja ringkas: foto, kategori, nama, harga. Selebihnya ada di halaman detail.
@@ -341,13 +427,20 @@ function formatText(value) {
     const categoryGrid = $("#category-grid");
     if (categoryGrid) {
       categoryGrid.innerHTML = categories.map(function (cat) {
-        const art = categoryArt[cat.id] || { cls: "art-generic", html: "" };
-        return '<a class="category-card" href="' + escapeHtml(cat.page) + '">' +
-          '<span class="category-art ' + art.cls + '">' + art.html + "</span>" +
-          '<span class="category-meta"><b>' + escapeHtml(cat.label) + "</b><small>" +
-          escapeHtml(cat.short || "") + "</small></span>" +
-          "</a>";
-      }).join("");
+  const art = categoryArt[cat.id] || { cls: "art-generic", html: "" };
+
+  const visual = cat.image
+  ? '<img class="category-photo" src="' + escapeHtml(cat.image) + '" alt="" loading="lazy">'
+  : "";
+
+  const artClass = "art-photo";
+
+  return '<a class="category-card" href="' + escapeHtml(cat.page) + '">' +
+    '<span class="category-art ' + artClass + '">' + visual + "</span>" +
+    '<span class="category-meta"><b>' + escapeHtml(cat.label) + "</b><small>" +
+    escapeHtml(cat.short || "") + "</small></span>" +
+    "</a>";
+}).join("");
     }
 
     const featuredGrid = $("#featured-grid");
@@ -375,6 +468,7 @@ function formatText(value) {
 
     let activeFilter = "semua";
     let term = "";
+    let sortMode = "default";
 
     // Mendukung alamat seperti produk.html?kategori=buku
     const fromUrl = new URLSearchParams(window.location.search).get("kategori");
@@ -391,15 +485,18 @@ function formatText(value) {
       }).join("");
     }
 
-    function draw() {
+        function draw() {
       const list = products.filter(function (p) {
         const inCategory = activeFilter === "semua" || p.category === activeFilter;
         const text = (p.name + " " + (p.description || "") + " " + categoryLabel(p)).toLowerCase();
+
         return inCategory && text.indexOf(term) !== -1;
       });
-      renderGrid(grid, emptyState, list);
+
+      renderGrid(grid, emptyState, sortProducts(list, sortMode));
+
       if (counter) counter.textContent = list.length + " produk";
-    }
+        }
 
     if (chipBox) {
       chipBox.addEventListener("click", function (event) {
@@ -424,6 +521,10 @@ function formatText(value) {
       });
     }
 
+    setupSort(function (mode) {
+      sortMode = mode;
+      draw();
+    });
     drawChips();
     draw();
   }
@@ -431,29 +532,63 @@ function formatText(value) {
   /* ============================================================
      HALAMAN: KATEGORI (data-page="category" data-category="...")
      ============================================================ */
-  function initCategory() {
+    function initCategory() {
     const grid = $("#product-grid");
     if (!grid) return;
+
     const emptyState = $("#empty-state");
     const title = $("#category-title");
     const intro = $("#category-intro");
+    const counter = $("#result-count");
+
     const category = getCategory(document.body.dataset.category);
+
+    let sortMode = "default";
 
     if (!category) {
       if (title) title.textContent = "Kategori tidak ditemukan";
       if (intro) intro.textContent = "Silakan kembali ke beranda atau lihat semua produk.";
-      renderBreadcrumb([{ label: "Beranda", href: "index.html" }, { label: "Kategori" }]);
+
+      renderBreadcrumb([
+        { label: "Beranda", href: "index.html" },
+        { label: "Kategori" }
+      ]);
+
       return;
     }
 
     document.title = category.label + " | Tujuputri";
+
     if (title) title.textContent = category.label;
     if (intro) intro.textContent = category.intro || "";
-    renderBreadcrumb([{ label: "Beranda", href: "index.html" }, { label: category.label }]);
 
-    renderGrid(grid, emptyState, products.filter(function (p) {
+    renderBreadcrumb([
+      { label: "Beranda", href: "index.html" },
+      { label: category.label }
+    ]);
+
+    const categoryProducts = products.filter(function (p) {
       return p.category === category.id;
-    }));
+    });
+
+    function drawCategory() {
+      renderGrid(
+        grid,
+        emptyState,
+        sortProducts(categoryProducts, sortMode)
+      );
+
+      if (counter) {
+        counter.textContent = categoryProducts.length + " produk";
+      }
+    }
+
+    setupSort(function (mode) {
+      sortMode = mode;
+      drawCategory();
+    });
+
+    drawCategory();
   }
 
   /* ============================================================
@@ -514,8 +649,8 @@ const adminActions =
     '<h3>Mau pesan atau tanya-tanya dulu?</h3>' +
     '<p>Pilih admin sesuai yang ingin kamu hubungi.</p>' +
     '<div class="admin-contact-grid">' +
-      adminButton("ikhwan", "Admin Ikhwan") +
-      adminButton("akhwat", "Admin Akhwat") +
+      adminButton("ikhwan", 'Admin Ikhwan <span class="admin-gender-note">(laki-laki)</span>') +
+      adminButton("akhwat", 'Admin Akhwat <span class="admin-gender-note">(perempuan)</span>') +
     '</div>' +
   '</section>';
 

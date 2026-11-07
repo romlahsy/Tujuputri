@@ -12,23 +12,26 @@
   <link rel="stylesheet" href="styles.css?v=2">
 </head>
 <body data-page="home">
+  
+<!-- INFO TOKO -->
+<div class="info-bar">
+  <div class="info-marquee">
+    <div class="info-marquee-track">
+      <div class="info-marquee-group">
+        <span>Tujuputri · Sleman, Yogyakarta | Melayani pembelian offline dan online.</span>
+        <span>Tujuputri · Sleman, Yogyakarta | Melayani pembelian offline dan online.</span>
+      </div>
 
-  <!-- INFO PENGIRIMAN (hanya di beranda). Ubah tulisannya langsung di baris bawah ini -->
-  <div class="info-bar">Pengiriman dari Sleman, DI Yogyakarta</div>
-
-  <!-- HEADER & NAVIGASI (sama di semua halaman) -->
-  <header class="site-header">
-    <a class="brand" href="index.html" aria-label="Tujuputri, kembali ke beranda">
-      <span class="brand-mark">T</span>
-      <span class="brand-name">Tujuputri</span>
-    </a>
-    <nav class="main-nav" id="main-nav" aria-label="Navigasi utama">
-      <a href="index.html">Beranda</a>
-      <a href="index.html#kategori">Kategori</a>
-      <a href="produk.html">Produk</a>
-    </nav>
-    <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Buka menu" aria-expanded="false" aria-controls="main-nav">☰</button>
-  </header>
+      <div class="info-marquee-group" aria-hidden="true">
+        <span>Tujuputri · Sleman, Yogyakarta | Melayani pembelian offline dan online.</span>
+        <span>Tujuputri · Sleman, Yogyakarta | Melayani pembelian offline dan online.</span>
+      </div>
+    </div>
+  </div>
+</div>
+  
+  <!-- Header bersama, dirender dari header.js -->
+  <div id="site-header"></div>
 
   <main>
     <!-- HERO -->
@@ -39,17 +42,6 @@
         <p class="hero-description">Beragam produk pilihan untuk menemani kebutuhan sehari-hari dan momen spesial keluarga.</p>
         <a class="button button-dark" href="#kategori">Jelajahi produk</a>
         <div class="hero-note"><span class="note-dot"></span> Satu tempat untuk berbagai kebutuhan keluarga</div>
-      </div>
-      <div class="hero-art" aria-hidden="true">
-        <div class="hero-shape shape-one"></div>
-        <div class="hero-shape shape-two"></div>
-        <div class="hero-label label-top">pilihan sehari-hari</div>
-        <div class="hero-stack">
-          <div class="stack-card stack-book"><span class="mini-line"></span><b>Ruang<br>membaca</b><small>BOOKS &amp; MORE</small></div>
-          <div class="stack-card stack-fabric"><span class="fabric-stitch"></span></div>
-          <div class="stack-card stack-paper"><span class="paper-flower">✳</span><b>little<br>moments</b></div>
-        </div>
-        <div class="hero-label label-bottom">thoughtfully selected</div>
       </div>
     </section>
 
@@ -97,6 +89,7 @@
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
   <script src="config.js?v=2"></script>
+  <script src="header.js?v=1"></script>
   <script src="script.js?v=2"></script>
 </body>
 </html>

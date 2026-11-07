@@ -14,19 +14,8 @@
 <!-- Halaman kategori: ganti data-category sesuai id kategori di config.js -->
 <body data-page="category" data-category="anak">
 
-  <!-- HEADER & NAVIGASI (sama di semua halaman) -->
-  <header class="site-header">
-    <a class="brand" href="index.html" aria-label="Tujuputri, kembali ke beranda">
-      <span class="brand-mark">T</span>
-      <span class="brand-name">Tujuputri</span>
-    </a>
-    <nav class="main-nav" id="main-nav" aria-label="Navigasi utama">
-      <a href="index.html">Beranda</a>
-      <a href="index.html#kategori">Kategori</a>
-      <a href="produk.html">Produk</a>
-    </nav>
-    <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Buka menu" aria-expanded="false" aria-controls="main-nav">☰</button>
-  </header>
+  <!-- Header bersama, dirender dari header.js -->
+  <div id="site-header"></div>
 
   <main>
     <!-- JUDUL KATEGORI (diisi otomatis dari config.js) -->
@@ -38,8 +27,34 @@
 
     <!-- DAFTAR PRODUK KATEGORI -->
     <section class="page-section section-wrap">
-      <div class="product-grid" id="product-grid"></div>
-      <p class="empty-state" id="empty-state" hidden>Produk di kategori ini akan segera hadir. <a class="text-link" href="produk.html">Lihat semua produk</a></p>
+
+  <div class="listing-toolbar">
+  <p class="result-count" id="result-count" aria-live="polite"></p>
+
+  <div class="sort-control">
+    <button
+      type="button"
+      class="sort-trigger"
+      id="sort-trigger"
+      aria-expanded="false"
+      aria-controls="sort-options"
+    >
+      <span id="sort-label">Urutkan</span>
+      <span class="sort-arrow">⌄</span>
+    </button>
+
+    <div class="sort-options" id="sort-options" hidden>
+      <button type="button" data-sort="default">Default</button>
+      <button type="button" data-sort="price-low">Termurah</button>
+      <button type="button" data-sort="price-high">Termahal</button>
+      <button type="button" data-sort="name-az">A–Z</button>
+      <button type="button" data-sort="name-za">Z–A</button>
+    </div>
+  </div>
+</div>
+
+  <div class="product-grid" id="product-grid"></div>
+  <p class="empty-state" id="empty-state" hidden>Produk di kategori ini akan segera hadir. <a class="text-link" href="produk.html">Lihat semua produk</a></p>
     </section>
   </main>
 
@@ -52,6 +67,7 @@
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
   <script src="config.js?v=2"></script>
+  <script src="header.js?v=1"></script>
   <script src="script.js?v=2"></script>
 </body>
 </html>
