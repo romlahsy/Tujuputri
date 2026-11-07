@@ -1009,7 +1009,7 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
-  padding: 0 6px 6px;
+  padding: 0 3px 6px;
 }
 
 .variant-grid::-webkit-scrollbar {
@@ -1082,6 +1082,7 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
   font-size: 11px;
   color: var(--muted);
   text-align: center;
+  margin-top: 6px;
 }
 
 .variant-indicators {
