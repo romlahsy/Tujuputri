@@ -1003,13 +1003,13 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
 /* Carousel varian */
 .variant-grid {
   display: flex;
-  gap: 12px;
+  gap: 6px;
   overflow-x: auto;
   scroll-snap-type: none;
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
-  padding: 0 12px 6px;
+  padding: 0 6px 6px;
 }
 
 .variant-grid::-webkit-scrollbar {
