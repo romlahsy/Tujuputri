@@ -423,6 +423,53 @@ function formatText(value) {
     });
   }
 
+  function initVariantIndicators(root) {
+  const track = root.querySelector(".variant-grid");
+  if (!track) return;
+
+  const dots = Array.from(root.querySelectorAll(".variant-dot"));
+  const cards = Array.from(track.querySelectorAll(".variant-card"));
+
+  if (!dots.length || !cards.length) return;
+
+  function updateIndicator() {
+    let activeIndex = 0;
+    let minDistance = Infinity;
+
+    cards.forEach(function (card, i) {
+      const cardLeft =
+        card.getBoundingClientRect().left -
+        track.getBoundingClientRect().left +
+        track.scrollLeft;
+
+      const distance = Math.abs(cardLeft - track.scrollLeft);
+
+      if (distance < minDistance) {
+        minDistance = distance;
+        activeIndex = i;
+      }
+    });
+
+    dots.forEach(function (dot, i) {
+      dot.classList.toggle("active", i === activeIndex);
+    });
+  }
+
+  let waiting = false;
+
+  track.addEventListener("scroll", function () {
+    if (waiting) return;
+    waiting = true;
+
+    window.requestAnimationFrame(function () {
+      waiting = false;
+      updateIndicator();
+    });
+  });
+
+  updateIndicator();
+  }
+
   /* ---------- KARTU PRODUK ---------- */
   function productCard(product) {
     const external = product.external;
@@ -725,6 +772,7 @@ const adminActions =
     adminActions.replace('<section class="admin-contact">', '').replace('</section>', '') +
   '</div>';
     initGallery(root);
+    initVariantIndicators(root);
   }
 
   /* ============================================================
