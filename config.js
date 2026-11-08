@@ -174,11 +174,6 @@ Daster dengan model longgar yang nyaman untuk menemani aktivitas sehari-hari.
   price: 50000,
   image: "images/daster-chibi-k-naya-1.webp",
   images: [
-    "images/daster-chibi-k-naya-2.webp",
-    "images/daster-chibi-k-naya-3.webp",
-    "images/daster-chibi-k-naya-4.webp",
-    "images/daster-chibi-k-naya-5.webp",
-    "images/daster-chibi-k-naya-6.webp",
     "images/daster-chibi-k-naya-7.webp",
     "images/daster-chibi-k-naya-8.webp"
   ],
@@ -192,14 +187,45 @@ Daster dengan model longgar yang nyaman untuk menemani aktivitas sehari-hari.
     - Tali di kedua sisi yang dapat diikat untuk menyesuaikan siluet.
   `,
   specs: [
-  ["Lebar Dada", "52 cm"],
-  ["Panjang Baju", "104 cm"],
-  ["Panjang Lengan", "16 cm"],
-  ["Varian", "Bunga: Kuning, oren, merah tua, dan hijau tua\nBulu: Merah dan mustard-gold"]
-],
+    ["Lebar Dada", "52 cm"],
+    ["Panjang Baju", "104 cm"],
+    ["Panjang Lengan", "16 cm"]
+  ],
+  variants: [
+    {
+      name: "Bunga Merah",
+      image: "images/daster-chibi-k-naya-1.webp",
+      available: false
+    },
+    {
+      name: "Bunga Oren",
+      image: "images/daster-chibi-k-naya-2.webp",
+      available: true
+    },
+    {
+      name: "Bunga Kuning",
+      image: "images/daster-chibi-k-naya-3.webp",
+      available: true
+    },
+    {
+      name: "Bunga Hijau",
+      image: "images/daster-chibi-k-naya-4.webp",
+      available: true
+    },
+    {
+      name: "Bulu Oren Bata",
+      image: "images/daster-chibi-k-naya-5.webp",
+      available: true
+    },
+    {
+      name: "Bulu Kuning Mustard-Gold",
+      image: "images/daster-chibi-k-naya-6.webp",
+      available: true
+    }
+  ],
   featured: true,
   available: true
-    },
+},
 
     {
       id: "pakaian-dalam-dewasa",
