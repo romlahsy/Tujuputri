@@ -162,27 +162,27 @@ Daster dengan model longgar yang nyaman untuk menemani aktivitas sehari-hari.
       name: "Hitam",
       image: "images/kings-standar-4.webp",
       available: false
-    }
+    },
     {
       name: "Biru tua bunga pink",
       image: "images/kings-standar-5.webp",
       available: true
-    }
+    },
     {
       name: "Coklat susu",
       image: "images/kings-standar-6.webp",
       available: true
-    }
+    },
     {
       name: "Hitam bunga biru",
       image: "images/kings-standar-7.webp",
       available: true
-    }
+    },
     {
       name: "Kuning mustard",
       image: "images/kings-standar-8.webp",
       available: true
-    }
+    },
     {
       name: "Hijau",
       image: "images/kings-standar-9.webp",
