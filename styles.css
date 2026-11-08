@@ -1111,3 +1111,12 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
     flex: 0 0 calc((100% - 12px) / 2);
   }
 }
+
+/* Desktop: deskripsi hingga pilihan varian rata kanan */
+@media (min-width: 801px) {
+  body[data-page="detail"] .detail-more {
+    max-width: 760px;
+    margin-left: auto;
+    margin-right: 0;
+  }
+}
