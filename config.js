@@ -214,12 +214,12 @@ Daster dengan model longgar yang nyaman untuk menemani aktivitas sehari-hari.
     },
     {
       name: "Bulu Oren Bata",
-      image: "images/daster-chibi-k-naya-5.webp",
+      image: "images/daster-chibi-k-naya-6.webp",
       available: true
     },
     {
       name: "Bulu Kuning Mustard-Gold",
-      image: "images/daster-chibi-k-naya-6.webp",
+      image: "images/daster-chibi-k-naya-5.webp",
       available: true
     }
   ],
