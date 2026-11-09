@@ -229,12 +229,12 @@ Daster dengan model longgar yang nyaman untuk menemani aktivitas sehari-hari.
     },
     {
       name: "Bunga Kuning",
-      image: "images/daster-chibi-k-naya-3.webp",
+      image: "images/daster-chibi-k-naya-4.webp",
       available: true
     },
     {
       name: "Bunga Hijau",
-      image: "images/daster-chibi-k-naya-4.webp",
+      image: "images/daster-chibi-k-naya-3.webp",
       available: true
     },
     {
