@@ -333,8 +333,8 @@ Daster dengan model longgar yang nyaman untuk menemani aktivitas sehari-hari.
     - Motif dan warna dikirim secara random sesuai ketersediaan stok.
   `,
   specs: [
-    ["Merek/Art", "Delvia Kids 158"]
-    ["Bahan", "Katun PE (Soft Cotton Blend)"]
+    ["Merek/Art", "Delvia Kids 158"],
+    ["Bahan", "Katun PE (Soft Cotton Blend)"],
     ["Ukuran", "L"],
     ["Lingkar Karet Pinggang (sebelum ditarik)", "±40 cm"],
     ["Lingkar Maksimal Saat Melar", "±70 cm"],
