@@ -275,7 +275,7 @@ Daster dengan model longgar yang nyaman untuk menemani aktivitas sehari-hari.
     {
   id: "celana-kacamata-pop-bayi",
   name: "Celana Kacamata/Pop Bayi",
-  price: null,
+  price: 20000,
   image: "images/celana-pop-1.webp",
   category: "anak",
   label: "Ibu & Anak",
@@ -283,6 +283,7 @@ Daster dengan model longgar yang nyaman untuk menemani aktivitas sehari-hari.
     Celana kacamata/pop bayi berbahan katun dengan model polos dan bordir karakter. Bersifat unisex, cocok untuk bayi laki-laki maupun perempuan. Bahannya adem dan nyaman untuk dipakai sehari-hari.
 
     **Catatan untuk Pembeli:**
+    - Harga yang tertera adalah untuk 3 pcs.
     - Ukuran usia hanya perkiraan karena pertumbuhan setiap bayi berbeda.
     - Untuk ukuran yang lebih akurat, disarankan mencocokkan lingkar pinggang celana yang biasa dipakai si kecil dengan ukuran yang tertera.
   `,
@@ -334,7 +335,7 @@ Daster dengan model longgar yang nyaman untuk menemani aktivitas sehari-hari.
   `,
   specs: [
     ["Merek/Art", "Delvia Kids 158"],
-    ["Bahan", "Katun PE (Soft Cotton Blend)"],
+    ["Bahan", "Katun PE"],
     ["Ukuran", "M"],
     ["Lingkar Karet Pinggang (sebelum ditarik)", "±32 cm"],
     ["Lingkar Maksimal Saat Melar", "±64 cm"],
