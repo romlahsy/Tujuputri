@@ -208,6 +208,7 @@ Daster dengan model longgar yang nyaman untuk menemani aktivitas sehari-hari.
     "images/daster-chibi-k-naya-8.webp"
   ],
   category: "fashion",
+  label: "Fashion Dewasa",
   details: `
     Daster Chibi K-Naya dengan pilihan 4 varian warna corak. Dilengkapi ritsleting pendek di bagian depan yang busui friendly serta tali di kedua sisi untuk menyesuaikan siluet pakaian.
 
@@ -272,33 +273,98 @@ Daster dengan model longgar yang nyaman untuk menemani aktivitas sehari-hari.
       available: true
     },
     {
-      id: "pakaian-bayi",
-      name: "Pakaian Bayi",
-      category: "anak",
-      label: "Ibu & Anak",
-      description: "Pilihan pakaian untuk kebutuhan si kecil.",
-      details: "",
-      specs: [],
-      price: null,
-      image: "",
-      owner: "bapak",
-      featured: false,
+  id: "celana-kacamata-pop-bayi",
+  name: "Celana Kacamata/Pop Bayi",
+  price: null,
+  image: "images/celana-pop-1.webp",
+  category: "anak",
+  label: "Ibu & Anak",
+  details: `
+    Celana kacamata/pop bayi berbahan katun dengan model polos dan bordir karakter. Bersifat unisex, cocok untuk bayi laki-laki maupun perempuan. Bahannya adem dan nyaman untuk dipakai sehari-hari.
+
+    **Catatan untuk Pembeli:**
+    - Ukuran usia hanya perkiraan karena pertumbuhan setiap bayi berbeda.
+    - Untuk ukuran yang lebih akurat, disarankan mencocokkan lingkar pinggang celana yang biasa dipakai si kecil dengan ukuran yang tertera.
+  `,
+  specs: [
+    ["Ukuran", "All Size"],
+    ["Lingkar Karet Pinggang", "±30–56 cm"],
+    ["Panjang Celana", "±19–20 cm"],
+    ["Perkiraan Usia", "1–12 bulan"]
+  ],
+  variants: [
+    {
+      name: "Biru",
+      image: "images/celana-pop-1.webp",
       available: true
     },
     {
-      id: "pakaian-dalam-anak",
-      name: "Pakaian Dalam Anak",
-      category: "anak",
-      label: "Ibu & Anak",
-      description: "Pilihan pakaian dalam untuk anak.",
-      details: "",
-      specs: [],
-      price: null,
-      image: "",
-      owner: "bapak",
-      featured: false,
+      name: "Pink",
+      image: "images/celana-pop-2.webp",
       available: true
     },
+    {
+      name: "Kuning",
+      image: "images/celana-pop-3.webp",
+      available: true
+    }
+  ],
+  featured: true,
+  available: true
+},
+    {
+  id: "cd-anak-perempuan-delvia-l",
+  name: "Celana Dalam Anak Perempuan Delvia Size L",
+  price: null,
+  image: "images/cd-anak-delvia-l-1.webp",
+  images: [
+    "images/cd-anak-delvia-l-4.webp",
+    "images/cd-anak-delvia-l-2.webp",
+    "images/cd-anak-delvia-l-3.webp"
+  ],
+  label: "Ibu & Anak",
+  category: "anak",
+  details: `
+    Celana dalam anak perempuan Delvia ukuran L dengan motif apel dan karakter yang lucu serta pilihan warna ceria. Cocok untuk menemani aktivitas harian buah hati Anda.
+
+    **Catatan untuk Pembeli:**
+    - Toleransi pengukuran mungkin terjadi.
+    - Untuk mendapatkan ukuran yang sesuai, silakan bandingkan dengan celana dalam yang biasa dipakai si kecil.
+    - Motif dan warna dikirim secara random sesuai ketersediaan stok.
+  `,
+  specs: [
+    ["Merek/Art", "Delvia Kids 158"]
+    ["Bahan", "Katun PE (Soft Cotton Blend)"]
+    ["Ukuran", "L"],
+    ["Lingkar Karet Pinggang (sebelum ditarik)", "±40 cm"],
+    ["Lingkar Maksimal Saat Melar", "±70 cm"],
+    ["Panjang Celana", "±23 cm"]
+  ],
+  variants: [
+    {
+      name: "Biru",
+      image: "images/cd-anak-delvia-l-7.webp",
+      available: true
+    },
+    {
+      name: "Ungu",
+      image: "images/cd-anak-delvia-l-4.webp",
+      available: true
+    },
+    {
+      name: "Kuning",
+      image: "images/cd-anak-delvia-l-5.webp",
+      available: true
+    },
+    {
+      name: "Pink",
+      image: "images/cd-anak-delvia-l-6.webp",
+      available: true
+    }
+  ],
+  featured: true,
+  available: true
+},
     {
       id: "buku-islami",
       name: "Buku Islami",
@@ -353,6 +419,7 @@ Daster dengan model longgar yang nyaman untuk menemani aktivitas sehari-hari.
     "images/sirwal-smoothez-aerie-4.webp"
   ],
   category: "fashion",
+  label: "Fashion Dewasa",
   details: `
     Sirwal berwarna hitam dengan model longgar yang nyaman digunakan untuk aktivitas sehari-hari. Terbuat dari bahan kain tebal, nyaman, dan tidak menerawang.
     Dilengkapi beberapa jenis saku untuk menyimpan barang kecil agar lebih praktis.
@@ -372,6 +439,5 @@ Daster dengan model longgar yang nyaman untuk menemani aktivitas sehari-hari.
   featured: true,
   available: true
 }
-
   ]
 };
