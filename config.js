@@ -202,7 +202,7 @@ Daster dengan model longgar yang nyaman untuk menemani aktivitas sehari-hari.
   id: "daster-chibi-knaya",
   name: "Daster Chibi K-Naya",
   price: 50000,
-  image: "images/daster-chibi-k-naya-1.webp",
+  image: "images/daster-chibi-k-naya-2.webp",
   images: [
     "images/daster-chibi-k-naya-7.webp",
     "images/daster-chibi-k-naya-8.webp"
