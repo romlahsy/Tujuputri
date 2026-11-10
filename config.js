@@ -313,19 +313,19 @@ Daster dengan model longgar yang nyaman untuk menemani aktivitas sehari-hari.
   available: true
 },
     {
-  id: "cd-anak-perempuan-delvia-l",
-  name: "Celana Dalam Anak Perempuan Delvia Size L",
+  id: "cd-anak-perempuan-delvia-M",
+  name: "Celana Dalam Anak Perempuan Delvia Size M",
   price: null,
-  image: "images/cd-anak-delvia-l-1.webp",
+  image: "images/cd-anak-delvia-m-1.webp",
   images: [
-    "images/cd-anak-delvia-l-4.webp",
-    "images/cd-anak-delvia-l-2.webp",
-    "images/cd-anak-delvia-l-3.webp"
+    "images/cd-anak-delvia-m-4.webp",
+    "images/cd-anak-delvia-m-2.webp",
+    "images/cd-anak-delvia-m-3.webp"
   ],
   label: "Ibu & Anak",
   category: "anak",
   details: `
-    Celana dalam anak perempuan Delvia ukuran L dengan motif apel dan karakter yang lucu serta pilihan warna ceria. Cocok untuk menemani aktivitas harian buah hati Anda.
+    Celana dalam anak perempuan Delvia ukuran M dengan motif apel dan karakter yang lucu serta pilihan warna ceria. Cocok untuk menemani aktivitas harian buah hati Anda.
 
     **Catatan untuk Pembeli:**
     - Toleransi pengukuran mungkin terjadi.
@@ -335,30 +335,30 @@ Daster dengan model longgar yang nyaman untuk menemani aktivitas sehari-hari.
   specs: [
     ["Merek/Art", "Delvia Kids 158"],
     ["Bahan", "Katun PE (Soft Cotton Blend)"],
-    ["Ukuran", "L"],
-    ["Lingkar Karet Pinggang (sebelum ditarik)", "±40 cm"],
-    ["Lingkar Maksimal Saat Melar", "±70 cm"],
-    ["Panjang Celana", "±23 cm"]
+    ["Ukuran", "M"],
+    ["Lingkar Karet Pinggang (sebelum ditarik)", "±32 cm"],
+    ["Lingkar Maksimal Saat Melar", "±64 cm"],
+    ["Panjang Celana", "±20 cm"]
   ],
   variants: [
     {
       name: "Biru",
-      image: "images/cd-anak-delvia-l-7.webp",
+      image: "images/cd-anak-delvia-m-7.webp",
       available: true
     },
     {
       name: "Ungu",
-      image: "images/cd-anak-delvia-l-4.webp",
+      image: "images/cd-anak-delvia-m-4.webp",
       available: true
     },
     {
       name: "Kuning",
-      image: "images/cd-anak-delvia-l-5.webp",
+      image: "images/cd-anak-delvia-m-5.webp",
       available: true
     },
     {
       name: "Pink",
-      image: "images/cd-anak-delvia-l-6.webp",
+      image: "images/cd-anak-delvia-m-6.webp",
       available: true
     }
   ],
