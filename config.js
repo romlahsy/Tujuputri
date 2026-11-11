@@ -210,7 +210,7 @@ Daster dengan model longgar yang nyaman untuk menemani aktivitas sehari-hari.
   category: "fashion",
   label: "Fashion Dewasa",
   details: `
-    Daster Chibi K-Naya dengan pilihan 4 varian warna corak. Dilengkapi ritsleting pendek di bagian depan yang busui friendly serta tali di kedua sisi untuk menyesuaikan siluet pakaian.
+    Daster Chibi K-Naya dengan berbagai pilihan varian warna dan corak. Dilengkapi ritsleting pendek di bagian depan yang busui friendly serta tali di kedua sisi untuk menyesuaikan siluet tubuh.
 
     **Fitur Produk:**
     - 1 saku fungsional di sisi kanan.
